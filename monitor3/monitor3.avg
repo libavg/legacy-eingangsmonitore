@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
+<avg id="main" width="800" height="600" 
+        onmousedown="startStoerung();" onmouseup="endStoerung();" 
+        onmousemove="moveStoerung();">
+  <image id="bkgd" x="0" y="0" href="../media/hintergrund.png" z="1"/>
+  <image id="stoerung_horiz" x="0" y="600" z="10"
+         href="../media/stoerung_horiz.tif" opacity="0.05"/>
+  <image id="stoerung_vert" x="770" y="80" z="10"
+         href="../media/stoerung_vert.tif" opacity="0.2"/>
+  <div id="distortion" x="0" y="455" z="10">
+    <image id="welle0" x="0" y="0" href="../media/welle_1.tif" opacity="0.0"/>
+    <image id="welle1" x="0" y="0" href="../media/welle_2.tif" opacity="0.0"/>
+    <image id="welle2" x="0" y="0" href="../media/welle_3.tif" opacity="0.0"/>
+    <image id="welle3" x="0" y="0" href="../media/welle_4.tif" opacity="0.0"/>
+    <image id="welle4" x="0" y="0" href="../media/welle_5.tif" opacity="0.0"/>
+    <image id="welle5" x="0" y="0" href="../media/welle_6.tif" opacity="0.0"/>
+  </div>
+  <div id="topscreen" x="60" y="70" width="760" height="240" z="2">
+    <image id="com_symbol" x="20" y="14" z="2" href="media/a/com_symbol.tif"/>
+    <words id="athmo_title" x="70" y="20" z="2" text="ring : com / athmosphäre"
+           font="lucon" size="12"/>
+
+    <image id="athmo_graph_leisten" x="50" y="10" z="1" href="media/a/athmo_graph_leisten.tif"/>
+    <div id="athmo_data_group" x="260" y="12" z="3" width="390" height="130">
+      <image id="athmo_data_1" x="0" y="0" z="1" href="media/a/athmo_graph1.tif"/>
+      <image id="athmo_data_2" x="400" y="18" z="1" href="media/a/athmo_graph2.tif"/>
+<!--      <image id="athmo_graph_overlay" x="0" y="0" z="4" opacity="0.5" href="media/a/athmo_graph_overlay.tif"/>-->
+    </div>
+    <div id="athmo_legend" x="70" y="48" z="3">
+      <image id="athmo_legend1_img" x="0" y="6" z="2" href="../media/gruener_punkt.tif"/>
+      <words id="athmo_legend1a" x="14" y="5" z="2" text="sticcstoff"
+             font="lucon" size="11" color="A0A0A0"/>
+      <words id="athmo_legend1b" x="120" y="5" z="2" text="78.0%"
+             font="lucon" size="11" color="A0A0A0"/>
+      <image id="athmo_legend_trenn1" x="0" y="20" z="2" href="media/a/athmo_trenn_horiz.tif"/>
+      <image id="athmo_legend2_img" x="0" y="26" z="2" href="../media/blauer_punkt.tif"/>
+      <words id="athmo_legend2a" x="14" y="25" z="2" text="sauerstoff"
+             font="lucon" size="11" color="A0A0A0"/>
+      <words id="athmo_legend2b" x="120" y="25" z="2" text="21.0%"
+             font="lucon" size="11" color="A0A0A0"/>
+      <image id="athmo_legend_trenn2" x="0" y="40" z="2" href="media/a/athmo_trenn_horiz.tif"/>
+      <image id="athmo_legend3_img" x="0" y="46" z="2" href="../media/orangener_punkt.tif"/>
+      <words id="athmo_legend3a" x="14" y="45" z="2" text="cohlendioxid"
+             font="lucon" size="11" color="A0A0A0"/>
+      <words id="athmo_legend3b" x="120" y="45" z="2" text="0.035%"
+             font="lucon" size="11" color="A0A0A0"/>
+      <image id="athmo_legend_trenn3" x="0" y="60" z="2" href="media/a/athmo_trenn_horiz.tif"/>
+      <image id="athmo_legend4_img" x="0" y="66" z="2" href="../media/weisser_punkt.tif"/>
+      <words id="athmo_legend4a" x="14" y="65" z="2" text="luftdrucc"
+             font="lucon" size="11" color="A0A0A0"/>
+      <words id="athmo_legend4b" x="120" y="65" z="2" text="1.0 bar"
+             font="lucon" size="11" color="A0A0A0"/>
+      <image id="athmo_legend_trenn4" x="0" y="80" z="2" href="media/a/athmo_trenn_horiz.tif"/>
+      <image id="athmo_legend5_img" x="0" y="86" z="2" href="../media/roter_punkt.tif"/>
+      <words id="athmo_legend5a" x="14" y="85" z="2" text="gravitation"
+             font="lucon" size="11" color="A0A0A0"/>
+      <words id="athmo_legend5b" x="120" y="85" z="2" text="9.81 m/s²"
+             font="lucon" size="11" color="A0A0A0"/>
+    </div>
+  </div>
+  <div id="bottomscreen" x="80" y="380" width="760" height="240" z="2">
+    <div id="logo" x="5" y="0" width="150" height="180" z="1">
+      <image id="logoimg" x="0" y="0" opacity="0.4" href="media/b/logo.tif" z="1"/>
+      <image id="auswahlbox" x="90" y="100" href="media/b/region_auswahlbox.tif" z="2"/>
+    </div>
+    <image id="raum_hintergrund" x="209" y="0" z="4"
+             href="media/b/lebensformen_hintergrund.tif"/>
+    
+    <div id="raum" x="171" y="5" z="5" width="249" height="170">
+      <image id="raum_combiosc_logo" x="0" y="0" z="2" href="media/b/icon_combiosc.tif"/>
+      <words id="raum_titel" x="56" y="10" z="3" text="ring : com / section : bar"
+             font="lucon" size="12"/>
+      <div id="raum_grundriss_group" x="45" y="31" z="1">
+        <image id="raum_grundriss" x="0" y="0" z="1" opacity="0.7" 
+               href="media/b/lebensformen_grundriss.tif"/>
+        <image id="raum_carbon1" x="155" y="69" z="3" href="../media/gruener_punkt.tif"/>
+        <image id="raum_carbon2" x="105" y="95" z="3" href="../media/gruener_punkt.tif"/>
+        <image id="raum_carbon3" x="20" y="50" z="3" href="../media/gruener_punkt.tif"/>
+        <image id="raum_orangener_punkt" x="35" y="19" z="3" href="../media/orangener_punkt.tif"/>
+        <image id="raum_blauer_punkt" x="85" y="9" z="3" href="../media/blauer_punkt.tif"/>
+      </div>
+    </div>
+    <div id="lebensformen" x="418" y="5" z="5" width="220" height="170">
+      <div id="lf_legend_group" x="5" y="140" width="220" height="30">
+        <words id="lf_legend" x="0" y="0" z="3" text="  carbonites    aliens    androids"
+               font="lucon" size="10" color="A0A0A0"/>
+        <image id="lf_legend_gruener_punkt" x="0" y="0" z="4" href="../media/gruener_punkt.tif"/>
+        <image id="lf_legend_orangener_punkt" x="80" y="0" z="4" href="../media/orangener_punkt.tif"/>
+        <image id="lf_legend_blauer_punkt" x="140" y="0" z="4" href="../media/blauer_punkt.tif"/>
+      </div>
+      <div id="lf_data_group" x="3" y="12" z="3" width="211" height="170">
+        <image id="lf_data_1" x="0" y="0" href="media/b/lebensformen_graph1.tif"/>
+        <image id="lf_data_2" x="400" y="0" href="media/b/lebensformen_graph2.tif"/>
+      </div>
+    </div>
+  </div>
+</avg>

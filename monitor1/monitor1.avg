@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
+<avg id="main" width="800" height="600" 
+         onmousedown="startStoerung();" onmouseup="endStoerung();" 
+         onmousemove="moveStoerung();"> 
+  <image id="stoerung_horiz" x="0" y="600" z="10"
+         href="../media/stoerung_horiz.tif" opacity="0.05"/>
+  <image id="stoerung_vert" x="770" y="80" z="10"
+         href="../media/stoerung_vert.tif" opacity="0.2"/>
+  <div id="distortion" x="0" y="455" z="10">
+    <image id="welle0" x="0" y="0" href="../media/welle_1.tif" opacity="0.0"/>
+    <image id="welle1" x="0" y="0" href="../media/welle_2.tif" opacity="0.0"/>
+    <image id="welle2" x="0" y="0" href="../media/welle_3.tif" opacity="0.0"/>
+    <image id="welle3" x="0" y="0" href="../media/welle_4.tif" opacity="0.0"/>
+    <image id="welle4" x="0" y="0" href="../media/welle_5.tif" opacity="0.0"/>
+    <image id="welle5" x="0" y="0" href="../media/welle_6.tif" opacity="0.0"/>
+  </div>
+  <image id="black" x="0" y="0" z="1" href="media/a/black.tif" bpp="16"/>
+  <div id="topscreen" x="0" y="0" width="800" height="240" z="2" opacity="1">
+    <excl id="werbung_switch">
+      <div>
+        <image id="starsoda_bkgd" x="0" y="0" z="1" 
+               href="media/a/starsoda/bkgd.tif"/>
+        <image id="starsoda_stern" x="100" y="11" z="2" 
+               href="media/a/starsoda/stern.tif"/>
+        <image id="starsoda_starsoda" x="351" y="33" z="3" 
+               href="media/a/starsoda/starsoda.tif" opacity="0"/>
+        <image id="starsoda_taste_of_time" x="196" y="90" z="4" 
+               href="media/a/starsoda/taste_of_time.tif" opacity="0"/>
+        <image id="starsoda_flasche" x="-230" y="0" z="6" 
+               href="media/a/starsoda/flasche.tif"/>
+      </div>
+      <div>
+        <image id="city" x="0" y="71" z="2" opacity="0" 
+               href="media/a/meetandmingle/city.tif"/>
+        <div id="godzilla_group" x="550" y="4" z="1">
+          <image id="godzilla" x="0" y="0" z="1" opacity="0" 
+                 href="media/a/meetandmingle/godzilla.tif"/>
+          <image id="eyes" x="18" y="44" z="2" opacity="0" 
+                 href="media/a/meetandmingle/eyes.tif"/>
+        </div>
+        <image id="rays" x="231" y="29" z="3" opacity="0" 
+               href="media/a/meetandmingle/rays.tif"/>
+        <image id="title" x="238" y="53" z="4" opacity="0" 
+               href="media/a/meetandmingle/title.tif"/>
+        <image id="date" x="238" y="53" z="4" opacity="0" 
+               href="media/a/meetandmingle/date.tif"/>
+      </div>
+      <div>
+        <image id="puppets_bkgd" x="0" y="0" z="1" 
+               href="media/a/puppetmastaz/bkgd.tif"/>
+        <image id="puppets" x="360" y="5" z="2" 
+                href="media/a/puppetmastaz/puppets.tif"/>
+        <image id="puppets_logo" x="95" y="2" z="5" 
+                href="media/a/puppetmastaz/puppets_logo.tif"/>
+        <image id="puppets_text1" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text1.tif"/>
+        <image id="puppets_text2" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text2.tif"/>
+        <image id="puppets_text3" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text3.tif"/>
+        <image id="puppets_text4" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text4.tif"/>
+        <image id="puppets_text5" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text5.tif"/>
+        <image id="puppets_text6" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text6.tif"/>
+        <image id="puppets_text7" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text7.tif"/>
+        <image id="puppets_text8" x="97" y="109" z="4" 
+                href="media/a/puppetmastaz/puppets_text8.tif"/>
+      </div>
+      <div>
+        <video id="ph_neutral_logo" x="240" y="0" loop="true"
+               href="media/a/ph_neutral/phneut2_320x240.avi"/>
+      </div>
+      <div id="gimp_main">
+        <image id="gimp_flyer" x="0" y="-5" z="1" bpp="16" 
+               href="media/a/gimp/gimp_logo.png" opacity="1" />
+        <words id="gimp_title" color="333333" x="-300" y="195" z="2" 
+               text="bring out the gimp" font="eurostil" size="20" />
+      </div>
+    </excl>
+  </div>
+  <image x="0" y="300" href="../media/hintergrund.png" z="1" bpp="16"/>
+  <div id="bottomscreen" x="0" y="400" width="800" height="200" z="2">
+    <image x="0" y="0" z="1" href="media/b/begruessung_bkgd.tif"/>
+    <div x="80" y="0" z="2" width="700" height="135">
+      <image id="begruessungstext1" x="700" y="10" z="2" 
+             href="media/b/begruessungstext1.tif"/>
+      <image id="begruessungstext2" x="700" y="60" z="2" 
+             href="media/b/begruessungstext2.tif"/>
+      <image id="begruessungstext3" x="700" y="107" z="2" 
+             href="media/b/begruessungstext3.tif"/>
+    </div>
+    <video id="rotation" x="80" y="0" z="3"
+           loop="true" href="media/b/c-base_rotation.mpg"/>
+  </div>
+</avg>
