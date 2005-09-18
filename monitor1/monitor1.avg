@@ -15,7 +15,7 @@
     <image id="welle4" x="0" y="0" href="../media/welle_5.tif" opacity="0.0"/>
     <image id="welle5" x="0" y="0" href="../media/welle_6.tif" opacity="0.0"/>
   </div>
-  <image id="black" x="0" y="0" z="1" href="media/a/black.tif" bpp="16"/>
+  <image id="black" x="0" y="0" z="1" href="media/a/black.tif"/>
   <div id="topscreen" x="0" y="0" width="800" height="240" z="2" opacity="1">
     <excl id="werbung_switch">
       <div>
@@ -75,14 +75,14 @@
                href="media/a/ph_neutral/phneut2_320x240.avi"/>
       </div>
       <div id="gimp_main">
-        <image id="gimp_flyer" x="0" y="-5" z="1" bpp="16" 
+        <image id="gimp_flyer" x="0" y="-5" z="1" 
                href="media/a/gimp/gimp_logo.png" opacity="1" />
         <words id="gimp_title" color="333333" x="-300" y="195" z="2" 
                text="bring out the gimp" font="eurostil" size="20" />
       </div>
     </excl>
   </div>
-  <image x="0" y="300" href="../media/hintergrund.png" z="1" bpp="16"/>
+  <image x="0" y="300" href="../media/hintergrund.png" z="1"/>
   <div id="bottomscreen" x="0" y="400" width="800" height="200" z="2">
     <image x="0" y="0" z="1" href="media/b/begruessung_bkgd.tif"/>
     <div x="80" y="0" z="2" width="700" height="135">
