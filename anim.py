@@ -3,47 +3,35 @@
 
 # TODO: All of this assumes a framerate of 30!
 
-def animationStep(nodeName, attrName, startValue, endValue, 
-        duration, curTime):
-    node = g_Player.getElementByID(nodeName)
-    if (curTime < duration): 
-        curValue = startValue+(endValue-startValue)*curTime/duration
-        setattr(node, attrName, curValue)
-        g_Player.setTimeout(30,
-                lambda: animationStep(nodeName, attrName, startValue,
-                        endValue, duration, (curTime+30)))
-    else:
-        setattr(node, attrName, endValue)
+import time
 
-def animateAttr(Player, nodeName, attrName, startValue, endValue, duration):
+class Animation:
+    def __init__(self, node, attrName, startValue, endValue, duration):
+        self.__node = node
+        self.__attrName = attrName
+        self.__startValue = startValue
+        self.__endValue = endValue
+        self.__duration = duration
+        g_Player.setTimeout(duration, self.__stop)
+        self.__interval = g_Player.setInterval(10, self.__step)
+        self.__startTime = time.time()
+        self.__step()
+    def __step(self):
+        part = ((time.time()-self.__startTime)/self.__duration)*1000
+        curValue = self.__startValue+(self.__endValue-self.__startValue)*part
+        setattr(self.__node, self.__attrName, curValue)
+    def __stop(self):
+        setattr(self.__node, self.__attrName, self.__endValue)
+        g_Player.clearInterval(self.__interval)
+
+def fadeOut(node, duration):
+    curValue = getattr(node, "opacity")
+    Animation(node, "opacity", curValue, 0, duration)
+
+def fadeIn(node, duration, max):
+    curValue = getattr(node, "opacity")
+    Animation(node, "opacity", curValue, max, duration)
+
+def init(Player):
     global g_Player
     g_Player = Player
-    animationStep(nodeName, attrName, startValue, endValue, duration, 30)
-
-def fadeStep(nodeName, change): 
-    node = g_Player.getElementByID(nodeName)
-    node.opacity += change
-
-def fadeEnd(id, nodeName, val):
-    node = g_Player.getElementByID(nodeName)
-    node.opacity = val
-    g_Player.clearInterval(id)
-
-def fadeOut(Player, nodeName, duration):
-    global g_Player
-    g_Player = Player
-    node = g_Player.getElementByID(nodeName)
-    durationInFrames = duration*30/1000
-    changePerFrame = -node.opacity/durationInFrames
-    id = g_Player.setInterval(25, lambda: fadeStep(nodeName, changePerFrame))
-    g_Player.setTimeout(duration, lambda: fadeEnd(id, nodeName, 0))
-
-def fadeIn(Player, nodeName, duration, max):
-    global g_Player
-    g_Player = Player
-    node = Player.getElementByID(nodeName)
-    durationInFrames = duration*30/1000
-    changePerFrame = (max-node.opacity)/durationInFrames
-    id = Player.setInterval(25, lambda: fadeStep(nodeName, changePerFrame))
-    Player.setTimeout(duration, lambda: fadeEnd(id, nodeName, max))
-

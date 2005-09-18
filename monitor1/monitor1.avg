@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
-<avg id="main" width="800" height="600" 
-         onmousedown="startStoerung();" onmouseup="endStoerung();" 
-         onmousemove="moveStoerung();"> 
+<avg id="main" width="800" height="600"> 
   <image id="stoerung_horiz" x="0" y="600" z="10"
          href="../media/stoerung_horiz.tif" opacity="0.05"/>
   <image id="stoerung_vert" x="770" y="80" z="10"

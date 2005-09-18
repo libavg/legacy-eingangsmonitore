@@ -1,16 +1,16 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import sys, os, math, random, subprocess, signal, atexit
+import sys, os, math
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
 import avg
-sys.path.append('../')
-import anim
-import time
 from datetime import date
 
+sys.path.append('../')
+import anim
+
 curLine = 1
-FRAMERATE = 30
+FRAMERATE = 25
 
 class Ad:
     def __init__(self, name, index, start_date, end_date, init_func):
@@ -23,7 +23,7 @@ class Ad:
 def move_welcome():
     global curLine
     node = Player.getElementByID("begruessungstext"+str(curLine))
-    node.x -= 75/FRAMERATE
+    node.x -= 120/FRAMERATE
     if node.x < -300:
         node.x = 700
         curLine += 1
@@ -33,32 +33,27 @@ def move_welcome():
 class starsoda_ad:
     def __init__(self):
         self.__curFrame=0
-        self.__intervalID=Player.setInterval(10, self.move_starsoda)
-#        Player.getElementByID("starsoda_starsoda").x=351
-#        Player.getElementByID("starsoda_taste_of_time").x=196
         self.__stern = Player.getElementByID("starsoda_stern")
         self.__flasche = Player.getElementByID("starsoda_flasche")
         self.__starsoda = Player.getElementByID("starsoda_starsoda")
         self.__taste = Player.getElementByID("starsoda_taste_of_time")
+        anim.Animation(self.__flasche, "x", -240, 765, 6600)
         Player.setTimeout(1200, lambda: setattr(self.__stern, "opacity", 0))
         Player.setTimeout(1900, lambda: setattr(self.__stern, "opacity", 1))
         Player.setTimeout(4700, lambda: setattr(self.__starsoda, "opacity", 1))
         Player.setTimeout(4700, 
-                lambda: anim.animateAttr(Player, "starsoda_starsoda", "x", 351.0, 671.0, 5700))
+                lambda: anim.Animation(self.__starsoda, "x", 
+                        351.0, 671.0, 5700))
         Player.setTimeout(5000, lambda: setattr(self.__taste, "opacity", 1))
         Player.setTimeout(5000, 
-                lambda: anim.animateAttr(Player, "starsoda_taste_of_time", "x", 196, 316, 1700))
-        Player.setTimeout(6300, lambda: anim.fadeOut(Player, "starsoda_taste_of_time", 400))
-        Player.setTimeout(6350, lambda: anim.fadeOut(Player, "starsoda_starsoda", 400))
+                lambda: anim.Animation(self.__taste, "x", 
+                        196, 316, 1700))
+        Player.setTimeout(6300, lambda: anim.fadeOut(self.__taste, 400))
+        Player.setTimeout(6350, lambda: anim.fadeOut(self.__starsoda, 400))
         Player.setTimeout(6700, self.__stop)
     def __stop(self):
-        self.__flasche.x = -230
-        anim.fadeOut(Player, "topscreen", 200) 
-        Player.clearInterval(self.__intervalID)
+        anim.fadeOut(Player.getElementByID("topscreen"), 200) 
         Player.setTimeout(2000, init_werbung)
-    def move_starsoda(self):
-        self.__curFrame += 1
-        self.__flasche.x += 5
 
 #def init_puppets_text()
 #{
@@ -273,13 +268,12 @@ curWerbung = 0
 
 def init_werbung():
     global curWerbung
-    global curWerbungObj
     global curAds
     curWerbung += 1
     curWerbung %= len(curAds)
     Player.getElementByID("topscreen").opacity=1
     Player.getElementByID("werbung_switch").activechild = curAds[curWerbung].index
-    curWerbungObj = curAds[curWerbung].init_func()
+    curAds[curWerbung].init_func()
 
 def init_cur_ads():
     global curAds
@@ -297,31 +291,24 @@ Log = avg.Logger.get()
 bDebug = not(os.getenv('CLEUSE_DEPLOY'))
 if (bDebug):
     Player.setResolution(0, 0, 0, 0) 
-    Log.setCategories(Log.APP |
-                      Log.WARNING | 
-                      Log.PROFILE |
-#                      Log.PROFILE_LATEFRAMES |
-                      Log.CONFIG |
-#                      Log.MEMORY  |
-#                      Log.BLTS    |
-                      Log.EVENTS)
 else:
     Player.setResolution(1, 0, 0, 0)
     Player.showCursor(0)
     Log.setDestination("/var/log/cleuse.log")
-    Log.setCategories(Log.APP |
-                      Log.WARNING | 
-                      Log.PROFILE |
-#                      Log.PROFILE_LATEFRAMES |
-                      Log.CONFIG |
-#                      Log.MEMORY  |
-#                      Log.BLTS    |
-                      Log.EVENTS)
+Log.setCategories(Log.APP |
+                  Log.WARNING | 
+                  Log.PROFILE |
+#                 Log.PROFILE_LATEFRAMES |
+                  Log.CONFIG |
+#                 Log.MEMORY  |
+#                 Log.BLTS    |
+                  Log.EVENTS)
 
 Player.loadFile("monitor1.avg")
 init_cur_ads()
+anim.init(Player)
 Player.setTimeout(10, lambda: Player.getElementByID("rotation").play())
 Player.setInterval(10, move_welcome)
 Player.setTimeout(100, init_werbung)
-Player.play(30)
+Player.play(FRAMERATE)
 

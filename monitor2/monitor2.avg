@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-15"?>
 <!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
-<avg id="main" width="800" height="600"
-         onmousedown="startStoerung();" onmouseup="endStoerung();" 
-         onmousemove="moveStoerung();">
+<avg id="main" width="800" height="600">
   <image id="bkgd" x="0" y="0" href="../media/hintergrund.png" z="1"/>
   <image id="stoerung_horiz" x="0" y="600" z="10"
          href="../media/stoerung_horiz.tif" opacity="0.05"/>
@@ -18,7 +16,7 @@
   </div>
   <image id="hinweise_bkgd" x="0" y="40" z="2" href="media/a/hinweise_bkgd.tif"/>
   <div id="topscreen" x="0" y="80" width="800" height="240" z="3">
-    <div id="hinweis1" x="800" y="0" z="1">
+    <div id="hinweis1" x="700" y="0" z="1">
       <excl id="hinweis_icon1">
         <image x="60" y="0" z="1" 
                href="media/a/icon_cleaning_agent.tif"/>
