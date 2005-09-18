@@ -9,8 +9,8 @@ from datetime import date
 sys.path.append('../')
 import anim
 
-curLine = 1
 FRAMERATE = 25
+curLine = 1
 
 class Ad:
     def __init__(self, name, index, start_date, end_date, init_func):
