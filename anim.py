@@ -1,7 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# TODO: All of this assumes a framerate of 30!
+# TODO:
+# - loops
+# - Folgen, Gruppen
+# - 
  
 import time
 

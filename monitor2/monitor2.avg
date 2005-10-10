@@ -1,112 +1,24 @@
-<?xml version="1.0" encoding="ISO-8859-15"?>
+<?xml version="1.0"?>
 <!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
 <avg id="main" width="800" height="600">
-  <image id="bkgd" x="0" y="0" href="../media/hintergrund.png" z="1"/>
-  <image id="stoerung_horiz" x="0" y="600" z="10"
-         href="../media/stoerung_horiz.tif" opacity="0.05"/>
-  <image id="stoerung_vert" x="770" y="80" z="10"
-         href="../media/stoerung_vert.tif" opacity="0.2"/>
-  <div id="distortion" x="0" y="455" z="10">
-    <image id="welle0" x="0" y="0" href="../media/welle_1.tif" opacity="0.0"/>
-    <image id="welle1" x="0" y="0" href="../media/welle_2.tif" opacity="0.0"/>
-    <image id="welle2" x="0" y="0" href="../media/welle_3.tif" opacity="0.0"/>
-    <image id="welle3" x="0" y="0" href="../media/welle_4.tif" opacity="0.0"/>
-    <image id="welle4" x="0" y="0" href="../media/welle_5.tif" opacity="0.0"/>
-    <image id="welle5" x="0" y="0" href="../media/welle_6.tif" opacity="0.0"/>
+  <div id="topscreen" x="0" y="0" width="800" height="300" z="2">
+    <image x="0" y="0" href="../media/hintergrund_leer.png"/>
+    <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
+    <image x="-90" y="30" opacity="0.4" href="../media/c-base_40.png"/>
+    <div id="lageplan" x="0" y="50" width="800" height="250">
+      <image x="16" y="18" opacity="0.6" href="media/lageplan/kasten_60.png"/>
+      <image x="59" y="25" href="media/lageplan/c-base.png"/>
+      <image x="80" y="78" href="media/lageplan/zeiger_c-base.png"/>
+      <image x="329" y="20" href="media/lageplan/grundriss.png"/>
+      <words x="223" y="39" text="bar"/>
+    </div>
   </div>
-  <image id="hinweise_bkgd" x="0" y="40" z="2" href="media/a/hinweise_bkgd.tif"/>
-  <div id="topscreen" x="0" y="80" width="800" height="240" z="3">
-    <div id="hinweis1" x="700" y="0" z="1">
-      <excl id="hinweis_icon1">
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_cleaning_agent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_combiosc.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_gravity_absent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_magnetic_field.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_nerdschleuder.tif"/>
-      </excl>
-      <words id="hinweis_text1" x="100" y="10" z="1" text=""/>
-    </div>
-    <div id="hinweis2" x="800" y="40" z="1">
-      <excl id="hinweis_icon2">
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_cleaning_agent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_combiosc.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_gravity_absent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_magnetic_field.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_nerdschleuder.tif"/>
-      </excl>
-      <words id="hinweis_text2" x="100" y="10" z="1" text=""/>
-    </div>
-    <div id="hinweis3" x="800" y="80" z="1">
-      <excl id="hinweis_icon3">
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_cleaning_agent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_combiosc.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_gravity_absent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_magnetic_field.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_nerdschleuder.tif"/>
-      </excl>
-      <words id="hinweis_text3" x="100" y="10" z="1" text=""/>
-    </div>
-    <div id="hinweis4" x="800" y="120" z="1">
-      <excl id="hinweis_icon4">
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_cleaning_agent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_combiosc.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_gravity_absent.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_magnetic_field.tif"/>
-        <image x="60" y="0" z="1" 
-               href="media/a/icon_nerdschleuder.tif"/>
-      </excl>
-      <words id="hinweis_text4" x="100" y="10" z="1" text=""/>
-    </div>
- </div>
-  <div id="bottomscreen" x="0" y="390" width="800" height="260" z="2">
-    <image id="ceit_bkgd" x="0" y="0" z="1" href="media/b/ceit_bkgd.tif"/>
-    <words id="ceiger_1_text_1" x="85" y="35" z="2" text="activitäts"
-        font="lucon" size="11"/>
-    <words id="ceiger_1_text_2" x="102" y="51" z="2" text="level"
-        font="lucon" size="11"/>
-    <image id="ceiger_1" x="118" y="0" z="2" href="media/b/ceit_ceiger.tif"/>
-    <words id="ceiger_2_text_1" x="187" y="35" z="2" text="unwahrscheinlichkeits"
-        font="lucon" size="11"/>
-    <words id="ceiger_2_text_2" x="242" y="51" z="2" text="level"
-        font="lucon" size="11"/>
-    <image id="ceiger_2" x="258" y="0" z="2" href="media/b/ceit_ceiger.tif"/>
-    <words id="ceiger_3_text_1" x="359" y="35" z="2" text="halluzinogen"
-        font="lucon" size="11"/>
-    <words id="ceiger_3_text_2" x="380" y="51" z="2" text="factor"
-        font="lucon" size="11"/>
-    <image id="ceiger_3" x="398" y="0" z="2" href="media/b/ceit_ceiger.tif"/>
-    <words id="ceiger_4_text_1" x="522" y="35" z="2" text="music"
-        font="lucon" size="11"/>
-    <words id="ceiger_4_text_2" x="505" y="51" z="2" text="mss-factor"
-        font="lucon" size="11"/>
-    <image id="ceiger_4" x="538" y="0" z="2" href="media/b/ceit_ceiger.tif"/>
-    <words id="ceiger_5_text_1" x="662" y="35" z="2" text="licht"
-        font="lucon" size="11"/>
-    <words id="ceiger_5_text_2" x="645" y="51" z="2" text="intensität"
-        font="lucon" size="11"/>
-    <image id="ceiger_5" x="678" y="0" z="2" href="media/b/ceit_ceiger.tif"/>
-    <div id="ceit_graph_group" x="81" y="70" z="2" width="450" height="70">
-      <image id="ceit_graph1" x="0" y="10" href="media/b/ceit_graph1.tif"/>
-      <image id="ceit_graph2" x="500" y="10" href="media/b/ceit_graph2.tif"/>
+  <div id="bottomscreen" x="0" y="300" width="800" height="300" z="2">
+    <image x="0" y="0" href="../media/hintergrund_leer.png"/>
+    <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
+    <image x="-90" y="30" opacity="0.4" href="../media/c-base_40.png"/>
+    <div id="parameter" y="50">
+      <image x="16" y="18" opacity="0.6" href="media/parameter/kasten_60.png"/>
     </div>
   </div>
 </avg>
