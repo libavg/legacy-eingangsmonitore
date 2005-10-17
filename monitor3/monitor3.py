@@ -28,17 +28,17 @@ class starsoda_ad:
         self.__flasche = Player.getElementByID("starsoda_flasche")
         self.__starsoda = Player.getElementByID("starsoda_starsoda")
         self.__taste = Player.getElementByID("starsoda_taste_of_time")
-        anim.Animation(self.__flasche, "x", -240, 765, 6600)
+        anim.LinearAnim(self.__flasche, "x", 6600, -240, 765)
         Player.setTimeout(1200, lambda: setattr(self.__stern, "opacity", 0))
         Player.setTimeout(1900, lambda: setattr(self.__stern, "opacity", 1))
         Player.setTimeout(4700, lambda: setattr(self.__starsoda, "opacity", 1))
         Player.setTimeout(4700, 
-                lambda: anim.Animation(self.__starsoda, "x", 
-                        351.0, 671.0, 5700))
+                lambda: anim.LinearAnim(self.__starsoda, "x", 
+                        5700, 351.0, 671.0))
         Player.setTimeout(5000, lambda: setattr(self.__taste, "opacity", 1))
         Player.setTimeout(5000, 
-                lambda: anim.Animation(self.__taste, "x", 
-                        196, 316, 1700))
+                lambda: anim.LinearAnim(self.__taste, "x", 
+                        1700, 196, 316))
         Player.setTimeout(6300, lambda: anim.fadeOut(self.__taste, 400))
         Player.setTimeout(6350, lambda: anim.fadeOut(self.__starsoda, 400))
         Player.setTimeout(6700, self.__stop)
@@ -50,14 +50,14 @@ class cwars_ad:
     def __start_logo(self): 
         Player.getElementByID("c-wars").opacity = 1
         anim.fadeOut(Player.getElementByID("c-wars"), 3000)
-        anim.Animation(Player.getElementByID("c-wars"), "x", 66, 40, 5000) 
+        anim.LinearAnim(Player.getElementByID("c-wars"), "x", 5000, 66, 40) 
     def __start_words1(self): 
-        anim.Animation(Player.getElementByID("moon"), "opacity", 0.0, 1.0, 1000)
-        anim.Animation(Player.getElementByID("where_past"), 
-                "opacity", 1.0, 0.0, 2000)
+        anim.LinearAnim(Player.getElementByID("moon"), "opacity", 1000, 0.0, 1.0)
+        anim.LinearAnim(Player.getElementByID("where_past"), 
+                "opacity", 2000, 1.0, 0.0)
     def __start_words2(self):
-        anim.Animation(Player.getElementByID("meets_future"), 
-                "opacity", 1.0, 0.0, 2000)
+        anim.LinearAnim(Player.getElementByID("meets_future"), 
+                "opacity", 2000, 1.0, 0.0)
     def __start_url(self): 
         Player.getElementByID("www_c-wars_com").opacity = 1
         anim.fadeOut(Player.getElementByID("www_c-wars_com"), 1500)
