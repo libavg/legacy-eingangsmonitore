@@ -38,8 +38,10 @@
             alignment="right" color="0D1C45" size="24"/>
       <words x="" y="79" parawidth="768" text="ceit bis zum start:"  font="Eurostile"
             alignment="right" color="0D1C45" size="24"/>
-      <words id="zeit_bis_start" x="0" y="113" parawidth="768" text="P18Y03M04DT12H30M17S24HS" 
-            font="EurostileCondensed" alignment="right" color="0D1C45" size="40"/>
+      <words id="zeit_bis_start" x="0" y="113" parawidth="695" text="P18Y03M04DT12H30M" 
+            font="Eurostile" alignment="right" color="0D1C45" size="24"/>
+      <words id="secs_bis_start" x="690" y="113" parawidth="78" text="17S" 
+            font="Eurostile" alignment="right" color="0D1C45" size="24"/>
     </div>
   </div>
 </avg>
