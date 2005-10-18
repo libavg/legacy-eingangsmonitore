@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-FRAMERATE = 60 
+FRAMERATE = 75 
 curLine = 1
 
 def moveWelcome():
@@ -22,6 +22,29 @@ def moveWelcome():
     if curLine > 6:
         curLine = 1
 
+def normalize(v):
+    v = v - int(v)
+    if v < 0:
+        v = v + 1
+    return v
+
+def calcMoonAge(year, mon, day):
+    # calculate the Julian date at 12h UT
+    YY = year - int((12-mon)/10)
+    MM = mon+9 
+    if MM >= 12:
+        MM = MM - 12
+    K1 = int(365.25*(YY+4712))
+    K2 = int(30.6*MM+0.5)
+    K3 = int(int((YY/100)+49)*0.75)-38
+    
+    JD = K1+K2+day+59          # for dates in Julian calendar
+    if JD > 2299160:
+        JD = JD - K3         # for Gregorian calendar
+    # calculate moon's age in days
+    IP = normalize((JD-2451550.1)/29.530588853)
+    return int(IP*29.53)
+    
 liftoffTime = datetime(2023,5,23)
 timeVelocity = 0
 lastMins = "" 
@@ -46,7 +69,7 @@ def calcTime():
         lastMins = mins
     secs = "%(#)02d" % {'#': long(timeToStart.seconds%60)}
     ms = "%(#)03d" % {'#': long(timeToStart.microseconds/1000)}
-    Player.getElementByID("secs_bis_start").text = secs+"S" #+ms+"MS"
+    Player.getElementByID("secs_bis_start").text = secs+"S"+ms+"MS"
 
     timeVelocity += random.random()-0.5
     if timeVelocity > 2:
@@ -61,9 +84,29 @@ def calcTime():
         timeVelocity = random.random()*100-50 
     liftoffTime += timedelta(0,timeVelocity/FRAMERATE)
 
+moonAge = -1
+
+def calcMoon():
+    global moonAge
+    now = datetime.now().date()
+    newMoonAge = calcMoonAge(now.year, now.month, now.day)
+    if newMoonAge != moonAge:
+        moonAge = newMoonAge
+        moonNode = Player.getElementByID("mond")
+        for i in range(0,moonNode.getNumChildren()):
+            moonNode.getChild(i).opacity = 0
+            moonNode.getChild(i).angle = 0
+        if moonAge < 15:
+            moonNode.getChild(moonAge).opacity = 1
+        else:
+            curNode = moonNode.getChild(29-moonAge)
+            curNode.opacity = 1
+            curNode.angle = 3.1415
+
 def onframe():
     moveWelcome()
     calcTime()
+    calcMoon()
 
 Player = avg.Player()
 Log = avg.Logger.get()

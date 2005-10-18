@@ -8,18 +8,24 @@
       <image x="16" y="18" opacity="0.6" href="media/willkommen/kasten_60.png"/>
       <image x="16" y="75" opacity="0.7" href="media/willkommen/kasten_mitte.png"/>
       <div x="16" y="5" width="756">
-          <words id="begruessungstext1" x="800" y="85" opacity="1" text="willcommen auf der c-base"
-                  font="Daidoh Remix RoundJka" color="DF0017" size="24"/>
-          <words id="begruessungstext2" x="800" y="85" opacity="1" text="willcommen auf der c-base"
-                  font="3 of 9 Barcode" color="DF0017" size="26"/>
-          <words id="begruessungstext3" x="800" y="85" opacity="1" text="willcommen auf der c-base"
-                  font="Braille AOE" color="DF0017" size="24"/>
-          <words id="begruessungstext4" x="800" y="79" opacity="1" text="willcommen auf der c-base"
-                  font="ceva" color="DF0017" size="36"/>
-          <words id="begruessungstext5" x="800" y="83" opacity="1" text="willcommen auf der c-base"
-                  font="Yiroglyphics" color="DF0017" size="28"/>
-          <words id="begruessungstext6" x="800" y="85" opacity="1" text="WILLCOMMEN AUF DER C-BASE"
-                  font="Eurostile" color="DF0017" size="24"/>
+          <words id="begruessungstext1" x="800" y="85" opacity="1" 
+              text="willcommen auf der c-base" font="Daidoh Remix RoundJka" 
+              color="DF0017" size="24"/>
+          <words id="begruessungstext2" x="800" y="85" opacity="1" 
+              text="willcommen auf der c-base" font="3 of 9 Barcode" 
+              color="DF0017" size="26"/>
+          <words id="begruessungstext3" x="800" y="85" opacity="1" 
+              text="willcommen auf der c-base" font="Braille AOE" 
+              color="DF0017" size="24"/>
+          <words id="begruessungstext4" x="800" y="79" opacity="1" 
+              text="willcommen auf der c-base" font="ceva" 
+              color="DF0017" size="36"/>
+          <words id="begruessungstext5" x="800" y="83" opacity="1" 
+              text="willcommen auf der c-base" font="Yiroglyphics" 
+              color="DF0017" size="28"/>
+          <words id="begruessungstext6" x="800" y="85" opacity="1" 
+              text="WILLCOMMEN AUF DER C-BASE" font="Eurostile" 
+              color="DF0017" size="24"/>
       </div>
       <image x="16" y="75" opacity="1" href="media/willkommen/kasten_mitte_maske.png"/>
     </div>
@@ -33,14 +39,38 @@
       <image x="16" y="18" opacity="0.6" href="media/zeit/kasten_60.png"/>
       <words id="stationsdatum" x="" y="24" parawidth="550" text="Stationszeit:  2005-10-05"  
             font="Eurostile" alignment="right" color="0D1C45" size="24"/>
-      <image id="mond" x="569" y="30" href="media/zeit/mondphasen/z07_halbmond.png"/>
+      <div id="mond" x="568" y="31">
+        <image id="mond00" href="media/zeit/mondphasen/z00_leermond.png"/>
+        <image id="mond01" href="media/zeit/mondphasen/z01.png"/>
+        <image id="mond02" href="media/zeit/mondphasen/z02.png"/>
+        <image id="mond03" href="media/zeit/mondphasen/z03.png"/>
+        <image id="mond04" href="media/zeit/mondphasen/z04.png"/>
+        <image id="mond05" href="media/zeit/mondphasen/z05.png"/>
+        <image id="mond06" href="media/zeit/mondphasen/z06.png"/>
+        <image id="mond07" href="media/zeit/mondphasen/z07_halbmond.png"/>
+        <image id="mond08" href="media/zeit/mondphasen/z08.png"/>
+        <image id="mond09" href="media/zeit/mondphasen/z09.png"/>
+        <image id="mond10" href="media/zeit/mondphasen/z10.png"/>
+        <image id="mond11" href="media/zeit/mondphasen/z11.png"/>
+        <image id="mond12" href="media/zeit/mondphasen/z12.png"/>
+        <image id="mond13" href="media/zeit/mondphasen/z13.png"/>
+        <image id="mond14" href="media/zeit/mondphasen/z14_vollmond.png"/>
+      </div>
       <words id="stationszeit" x="" y="24" parawidth="768" text="14:34:34"  font="Eurostile"
             alignment="right" color="0D1C45" size="24"/>
       <words x="" y="79" parawidth="768" text="ceit bis zum start:"  font="Eurostile"
             alignment="right" color="0D1C45" size="24"/>
-      <words id="zeit_bis_start" x="0" y="113" parawidth="695" text="P18Y03M04DT12H30M" 
+<!--            
+      <words id="zeit_bis_start" x="0" y="113" parawidth="695" 
+            text="P18Y03M04DT12H30M" 
             font="Eurostile" alignment="right" color="0D1C45" size="24"/>
       <words id="secs_bis_start" x="690" y="113" parawidth="78" text="17S" 
+            font="Eurostile" alignment="right" color="0D1C45" size="24"/>
+-->            
+      <words id="zeit_bis_start" x="0" y="113" parawidth="573" 
+            text="P18Y03M04DT12H30M" 
+            font="Eurostile" alignment="right" color="0D1C45" size="24"/>
+      <words id="secs_bis_start" x="573" y="113" parawidth="195" text="17S" 
             font="Eurostile" alignment="right" color="0D1C45" size="24"/>
     </div>
   </div>
