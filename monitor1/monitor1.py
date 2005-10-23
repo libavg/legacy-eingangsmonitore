@@ -9,18 +9,27 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-FRAMERATE = 75 
-curLine = 1
+FRAMERATE = 60 
+curLine = 15
 
 def moveWelcome():
     global curLine
     node = Player.getElementByID("begruessungstext"+str(curLine))
-    node.x -= 90.0/FRAMERATE
-    if node.x < -300:
-        node.x = 800
-        curLine += 1
-    if curLine > 6:
-        curLine = 1
+    if curLine == 7 or curLine == 14:
+        # Das sind die Zeilen, die nach rechts laufen.
+        node.x += 90.0/FRAMERATE
+        if node.x > 800:
+            node.x = -150
+            curLine += 1
+        if curLine > Player.getElementByID("begruessungstext").getNumChildren():
+            curLine = 1
+    else:
+        node.x -= 90.0/FRAMERATE
+        if node.x < -300:
+            node.x = 800
+            curLine += 1
+        if curLine > Player.getElementByID("begruessungstext").getNumChildren():
+            curLine = 1
 
 def normalize(v):
     v = v - int(v)
@@ -80,7 +89,7 @@ def calcTime():
         timeVelocity -= 0.2
     elif timeVelocity < -5:
         timeVelocity += 0.2
-    if random.random() > 0.9998:
+    if random.random() > 0.9995:
         timeVelocity = random.random()*100-50 
     liftoffTime += timedelta(0,timeVelocity/FRAMERATE)
 
