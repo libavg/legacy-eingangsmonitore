@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-FRAMERATE = 60 
+FRAMERATE = 75 
 curLine = 15
 
 def moveWelcome():
@@ -139,5 +139,6 @@ Log.setCategories(Log.APP |
 Player.loadFile("monitor1.avg")
 anim.init(Player)
 Player.setInterval(10, onframe)
+Player.getElementByID("bkgndvideo").play()
 Player.play(FRAMERATE)
 

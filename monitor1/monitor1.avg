@@ -1,9 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
 <avg id="main" width="800" height="600"> 
-  <div id="topscreen" x="0" y="0" width="800" height="300">
+  <div id="topscreen_bkgr" x="0" y="0" width="800" height="300">
     <image x="0" y="0" href="../media/hintergrund_leer.png"/>
     <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
+  </div>
+  <div id="bottomscreen_bkgr" x="0" y="300" width="800" height="300" opacity="1">
+    <image x="0" y="0" href="../media/hintergrund_leer.png"/>
+    <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
+    <image x="-90" y="30" opacity="0.4" href="../media/c-base_40.png"/>
+  </div>
+  <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0.2" 
+      blendmode="add" href="../media/c-logo_wire_smooth_400x304.mpg" loop="true"/>
+  <div id="topscreen" x="0" y="0" width="800" height="300">
     <div id="willkommen" x="0" y="50" width="800" height="250">
       <image x="16" y="18" opacity="0.6" href="media/willkommen/kasten_60.png"/>
       <image x="16" y="75" opacity="0.7" href="media/willkommen/kasten_mitte.png"/>
@@ -68,9 +77,6 @@
     <image x="-90" y="30" opacity="0.6" href="../media/c-base_40.png"/>
   </div>
   <div id="bottomscreen" x="0" y="300" width="800" height="300" opacity="1">
-    <image x="0" y="0" href="../media/hintergrund_leer.png"/>
-    <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
-    <image x="-90" y="30" opacity="0.4" href="../media/c-base_40.png"/>
     <div id="zeit" x="0" y="50" width="800" height="250">
       <image x="16" y="18" opacity="0.6" href="media/zeit/kasten_60.png"/>
       <words id="stationsdatum" x="" y="24" parawidth="550" text="Stationszeit:  2005-10-05"  
