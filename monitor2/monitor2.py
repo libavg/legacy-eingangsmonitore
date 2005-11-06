@@ -8,8 +8,6 @@ import avg
 sys.path.append('../')
 import anim
 
-FRAMERATE = 60 
-
 Player = avg.Player()
 Log = avg.Logger.get()
 bDebug = not(os.getenv('CLEUSE_DEPLOY'))
@@ -30,5 +28,8 @@ Log.setCategories(Log.APP |
 
 Player.loadFile("monitor2.avg")
 anim.init(Player)
-Player.play(FRAMERATE)
+framerate = Player.getVideoRefreshRate()
+if framerate < 60:
+    framerate = 60
+Player.play(framerate, 1)
 

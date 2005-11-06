@@ -10,7 +10,7 @@
     <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
     <image x="-90" y="30" opacity="0.4" href="../media/c-base_40.png"/>
   </div>
-  <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0.2" 
+  <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0" 
       blendmode="add" href="../media/c-logo_wire_smooth_400x304.mpg" loop="true"/>
   <div id="topscreen" x="0" y="0" width="800" height="300">
     <div id="willkommen" x="0" y="50" width="800" height="250">

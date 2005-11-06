@@ -11,8 +11,6 @@ from datetime import date
 sys.path.append('../')
 import anim
 
-FRAMERATE = 60 
-
 class Ad:
     def __init__(self, name, index, start_date, end_date, init_func):
         self.name = name
@@ -335,5 +333,8 @@ Player.loadFile("monitor3.avg")
 init_cur_ads()
 anim.init(Player)
 Player.setTimeout(100, init_werbung)
-Player.play(FRAMERATE)
+framerate = Player.getVideoRefreshRate()
+if framerate < 60:
+    framerate = 60
+Player.play(framerate, 1)
 

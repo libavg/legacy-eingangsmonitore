@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-FRAMERATE = 75 
 curLine = 15
 
 def moveWelcome():
@@ -17,14 +16,14 @@ def moveWelcome():
     node = Player.getElementByID("begruessungstext"+str(curLine))
     if curLine == 7 or curLine == 14:
         # Das sind die Zeilen, die nach rechts laufen.
-        node.x += 90.0/FRAMERATE
+        node.x += 90.0/framerate
         if node.x > 800:
             node.x = -150
             curLine += 1
         if curLine > Player.getElementByID("begruessungstext").getNumChildren():
             curLine = 1
     else:
-        node.x -= 90.0/FRAMERATE
+        node.x -= 90.0/framerate
         if node.x < -300:
             node.x = 800
             curLine += 1
@@ -91,7 +90,7 @@ def calcTime():
         timeVelocity += 0.2
     if random.random() > 0.9995:
         timeVelocity = random.random()*100-50 
-    liftoffTime += timedelta(0,timeVelocity/FRAMERATE)
+    liftoffTime += timedelta(0,timeVelocity/framerate)
 
 moonAge = -1
 
@@ -139,6 +138,9 @@ Log.setCategories(Log.APP |
 Player.loadFile("monitor1.avg")
 anim.init(Player)
 Player.setInterval(10, onframe)
-Player.getElementByID("bkgndvideo").play()
-Player.play(FRAMERATE)
-
+#Player.getElementByID("bkgndvideo").opacity = 0.2
+#Player.getElementByID("bkgndvideo").play()
+framerate = Player.getVideoRefreshRate()
+if framerate < 60:
+    framerate = 60
+Player.play(framerate, 1)
