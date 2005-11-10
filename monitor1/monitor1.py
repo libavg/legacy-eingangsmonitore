@@ -138,8 +138,8 @@ Log.setCategories(Log.APP |
 Player.loadFile("monitor1.avg")
 anim.init(Player)
 Player.setInterval(10, onframe)
-#Player.getElementByID("bkgndvideo").opacity = 0.2
-#Player.getElementByID("bkgndvideo").play()
+Player.getElementByID("bkgndvideo").opacity = 0.4
+Player.getElementByID("bkgndvideo").play()
 framerate = Player.getVideoRefreshRate()
 if framerate < 60:
     framerate = 60

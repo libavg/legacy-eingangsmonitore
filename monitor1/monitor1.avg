@@ -8,10 +8,12 @@
   <div id="bottomscreen_bkgr" x="0" y="300" width="800" height="300" opacity="1">
     <image x="0" y="0" href="../media/hintergrund_leer.png"/>
     <image x="0" y="0" opacity="0.7" href="../media/rillen_70.png"/>
+<!--
     <image x="-90" y="30" opacity="0.4" href="../media/c-base_40.png"/>
+-->    
   </div>
   <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0" 
-      blendmode="add" href="../media/c-logo_wire_smooth_400x304.mpg" loop="true"/>
+      blendmode="add" href="../media/base_loop.avi" loop="true"/>
   <div id="topscreen" x="0" y="0" width="800" height="300">
     <div id="willkommen" x="0" y="50" width="800" height="250">
       <image x="16" y="18" opacity="0.6" href="media/willkommen/kasten_60.png"/>
@@ -56,8 +58,8 @@
           <words id="begruessungstext13" x="800" y="80" opacity="1" 
               text="ACCEPTVS IN C-BASE SIS!" font="Bitstream Vera Serif" 
               color="DF0017" size="22"/>
-          <words id="begruessungstext14" x="-150" y="78" parawidth="300" opacity="1" 
-              text="أهل وسهل في سيبا يس  " font="Arial" 
+          <words id="begruessungstext14" x="-150" y="78" parawidth="300"
+              opacity="1" text="أهل وسهل في سيبا يس  " font="Arial" 
               color="DF0017" size="34"/>
           <words id="begruessungstext15" x="800" y="83" opacity="1" 
               text="willcommen  auf  der  c-base" font="LinearKonstrukt" 
@@ -72,14 +74,16 @@
               text="willcommen auf der c-base" font="MANTRA" 
               color="DF0017" size="32"/>
       </div>
-      <image x="16" y="75" opacity="1" href="media/willkommen/kasten_mitte_maske.png"/>
+      <image x="16" y="75" opacity="1" 
+            href="media/willkommen/kasten_mitte_maske.png"/>
     </div>
     <image x="-90" y="30" opacity="0.6" href="../media/c-base_40.png"/>
   </div>
   <div id="bottomscreen" x="0" y="300" width="800" height="300" opacity="1">
     <div id="zeit" x="0" y="50" width="800" height="250">
       <image x="16" y="18" opacity="0.6" href="media/zeit/kasten_60.png"/>
-      <words id="stationsdatum" x="" y="24" parawidth="550" text="Stationszeit:  2005-10-05"  
+      <words id="stationsdatum" x="" y="24" parawidth="550" 
+            text="Stationszeit:  2005-10-05"  
             font="Eurostile" alignment="right" color="0D1C45" size="24"/>
       <div id="mond" x="568" y="31">
         <image id="mond00" href="media/zeit/mondphasen/z00_leermond.png"/>
@@ -98,10 +102,10 @@
         <image id="mond13" href="media/zeit/mondphasen/z13.png"/>
         <image id="mond14" href="media/zeit/mondphasen/z14_vollmond.png"/>
       </div>
-      <words id="stationszeit" x="" y="24" parawidth="768" text="14:34:34"  font="Eurostile"
-            alignment="right" color="0D1C45" size="24"/>
-      <words x="" y="79" parawidth="768" text="ceit bis zum start:"  font="Eurostile"
-            alignment="right" color="0D1C45" size="24"/>
+      <words id="stationszeit" x="" y="24" parawidth="768" text="14:34:34"
+          font="Eurostile" alignment="right" color="0D1C45" size="24"/>
+      <words x="" y="79" parawidth="768" text="ceit bis zum start:"  
+          font="Eurostile" alignment="right" color="0D1C45" size="24"/>
 <!--            
       <words id="zeit_bis_start" x="0" y="113" parawidth="695" 
             text="P18Y03M04DT12H30M" 
