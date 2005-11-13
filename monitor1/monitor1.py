@@ -11,6 +11,18 @@ import anim
 
 curLine = 19
 
+def newWelcome():
+    global curLine
+    node = Player.getElementByID("begruessungstext"+str(curLine))
+    curLine += 1
+    if curLine > Player.getElementByID("begruessungstext").getNumChildren():
+        curLine = 1
+    if curLine == 7 or curLine == 14:
+        anim.LinearAnim(node, "x", 10000, -150, 800, newWelcome)
+    else:
+        anim.LinearAnim(node, "x", 11500, 800, -300, newWelcome)
+        
+
 def moveWelcome():
     global curLine
     node = Player.getElementByID("begruessungstext"+str(curLine))
@@ -112,7 +124,7 @@ def calcMoon():
             curNode.angle = 3.1415
 
 def onframe():
-    moveWelcome()
+#    moveWelcome()
     calcTime()
     calcMoon()
 
@@ -138,6 +150,7 @@ Log.setCategories(Log.APP |
 Player.loadFile("monitor1.avg")
 anim.init(Player)
 Player.setInterval(10, onframe)
+Player.setTimeout(10, newWelcome)
 Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
 framerate = Player.getVideoRefreshRate()
