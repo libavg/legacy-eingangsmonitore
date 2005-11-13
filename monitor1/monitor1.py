@@ -141,9 +141,9 @@ Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
 #                 Log.PROFILE_LATEFRAMES |
-                  Log.CONFIG 
+                  Log.CONFIG
 #                 Log.MEMORY  |
-#                 Log.BLTS    |
+#                 Log.BLTS    
 #                  Log.EVENTS
                   )
 
@@ -156,5 +156,4 @@ Player.getElementByID("bkgndvideo").play()
 framerate = Player.getVideoRefreshRate()
 if framerate < 60:
     framerate = 60
-framerate = 30 
-Player.play(30, 1)
+Player.play(framerate, 1)
