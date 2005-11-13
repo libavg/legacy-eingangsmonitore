@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-curLine = 15
+curLine = 19
 
 def moveWelcome():
     global curLine
