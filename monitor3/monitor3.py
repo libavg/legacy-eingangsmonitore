@@ -3,13 +3,17 @@
 
 #TODO: Bessere Icons, korrekt eingefärbt
 
-import sys, os, math
+import sys, os, math, urllib
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
 import avg
 from datetime import date
 
 sys.path.append('../')
 import anim
+
+def loadTermine():
+    file = urllib.urlopen("http://coredump.c-base.org/coredump/TerMine?action=raw")
+    return file.read()
 
 class Ad:
     def __init__(self, name, index, start_date, end_date, init_func):
@@ -282,7 +286,7 @@ adSchedule= [
 #              Ad("phneutral", 3, date(2004,4,16), date(2004,4,23), init_phneutral),
               Ad("starsoda", 0, date(2002,4,16), date(2014,4,23), starsoda_ad)
 #              Ad("meet and mingle", 1, date(2004,2,1), date(2004,3,1), init_mingle),
-#              Ad("puppetmastaz", 2, date(2004,2,1), date(2004,3,1), init_puppets),
+#              Ad("puppetmastaz", 2, date(2004,2,1), date(2004,3,1), init_puppets)
 #              Ad("gimp", 4, date(2004,2,1), date(2014,10,1), startGimpAnimation)
 #              Ad("c-wars", 5, date(2004,2,1), date(2014,10,1), cwars_ad)
             ]
@@ -322,13 +326,14 @@ else:
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
-#                 Log.PROFILE_LATEFRAMES |
+#                  Log.PROFILE_LATEFRAMES |
                   Log.CONFIG 
 #                 Log.MEMORY  |
 #                 Log.BLTS    |
 #                  Log.EVENTS
                   )
-
+#print loadTermine()
+#quit(0)
 Player.loadFile("monitor3.avg")
 init_cur_ads()
 anim.init(Player)
@@ -336,5 +341,5 @@ Player.setTimeout(100, init_werbung)
 framerate = Player.getVideoRefreshRate()
 if framerate < 60:
     framerate = 60
+#framerate /= 2
 Player.play(framerate, 1)
-

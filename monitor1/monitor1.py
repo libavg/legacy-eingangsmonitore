@@ -143,4 +143,5 @@ Player.getElementByID("bkgndvideo").play()
 framerate = Player.getVideoRefreshRate()
 if framerate < 60:
     framerate = 60
-Player.play(framerate, 1)
+framerate = 30 
+Player.play(30, 1)
