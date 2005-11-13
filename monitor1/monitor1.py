@@ -13,10 +13,10 @@ curLine = 19
 
 def newWelcome():
     global curLine
-    node = Player.getElementByID("begruessungstext"+str(curLine))
     curLine += 1
     if curLine > Player.getElementByID("begruessungstext").getNumChildren():
         curLine = 1
+    node = Player.getElementByID("begruessungstext"+str(curLine))
     if curLine == 7 or curLine == 14:
         anim.LinearAnim(node, "x", 10000, -150, 800, newWelcome)
     else:
