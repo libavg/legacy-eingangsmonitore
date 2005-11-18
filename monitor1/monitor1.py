@@ -22,26 +22,6 @@ def newWelcome():
     else:
         anim.LinearAnim(node, "x", 11500, 800, -300, newWelcome)
         
-
-def moveWelcome():
-    global curLine
-    node = Player.getElementByID("begruessungstext"+str(curLine))
-    if curLine == 7 or curLine == 14:
-        # Das sind die Zeilen, die nach rechts laufen.
-        node.x += 90.0/framerate
-        if node.x > 800:
-            node.x = -150
-            curLine += 1
-        if curLine > Player.getElementByID("begruessungstext").getNumChildren():
-            curLine = 1
-    else:
-        node.x -= 90.0/framerate
-        if node.x < -300:
-            node.x = 800
-            curLine += 1
-        if curLine > Player.getElementByID("begruessungstext").getNumChildren():
-            curLine = 1
-
 def normalize(v):
     v = v - int(v)
     if v < 0:
@@ -68,9 +48,11 @@ def calcMoonAge(year, mon, day):
 liftoffTime = datetime(2023,5,23)
 timeVelocity = 0
 lastMins = "" 
+now = 0
 
 def calcTime():
-    global liftoffTime, timeVelocity, lastMins
+    global liftoffTime, timeVelocity, lastMins, now
+    lasttime = now
     now = datetime.now()
     dateString = "stationsceit:  "+now.date().isoformat()
     Player.getElementByID("stationsdatum").text = dateString
@@ -101,8 +83,9 @@ def calcTime():
     elif timeVelocity < -5:
         timeVelocity += 0.2
     if random.random() > 0.9995:
-        timeVelocity = random.random()*100-50 
-    liftoffTime += timedelta(0,timeVelocity/framerate)
+        timeVelocity = random.random()*100-50
+    if lasttime != 0:
+        liftoffTime += timedelta(0,timeVelocity*(now-lasttime).microseconds/1000000)
 
 moonAge = -1
 
@@ -124,7 +107,6 @@ def calcMoon():
             curNode.angle = 3.1415
 
 def onframe():
-#    moveWelcome()
     calcTime()
     calcMoon()
 
@@ -140,7 +122,7 @@ else:
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
-#                 Log.PROFILE_LATEFRAMES |
+                 Log.PROFILE_LATEFRAMES |
                   Log.CONFIG
 #                 Log.MEMORY  |
 #                 Log.BLTS    
@@ -153,7 +135,5 @@ Player.setInterval(10, onframe)
 Player.setTimeout(10, newWelcome)
 Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
-framerate = Player.getVideoRefreshRate()
-if framerate < 60:
-    framerate = 60
-Player.play(framerate, 1)
+Player.setVBlankFramerate(2)
+Player.play()
