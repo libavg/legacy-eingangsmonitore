@@ -3,7 +3,7 @@
 
 #TODO: Bessere Icons, korrekt eingefärbt
 
-import sys, os, math, urllib
+import sys, os, math, urllib, re
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
 import avg
 from datetime import date
@@ -11,9 +11,24 @@ from datetime import date
 sys.path.append('../')
 import anim
 
+class termin:
+    def __init__(self, string):
+        print string
+
 def loadTermine():
-    file = urllib.urlopen("http://coredump.c-base.org/coredump/TerMine?action=raw")
-    return file.read()
+    global termine
+    print "Termine werden gelesen."
+    file = urllib.urlopen("http://coredump.c-base.info/TerMine?action=raw")
+    print "Termine fertig gelesen."
+    termineStr = file.read()
+    lines = termineStr.splitlines()
+    expr = re.compile("\|\|'''(.+)'''\|\|(.+)\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|")
+    for line in lines:
+        line = line.rstrip("\n\r \t")
+        match = expr.search(line)
+        if match != None:
+            if match.group(5) == "x" or match.group(5) == "xx":
+                print match.group(1), match.group(3), match.group(4)
 
 class Ad:
     def __init__(self, name, index, start_date, end_date, init_func):
@@ -264,8 +279,8 @@ Log.setCategories(Log.APP |
 #                 Log.BLTS    |
 #                  Log.EVENTS
                   )
-#print loadTermine()
-#quit(0)
+#loadTermine()
+#exit(0)
 Player.loadFile("monitor3.avg")
 init_cur_ads()
 anim.init(Player)
