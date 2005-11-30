@@ -1,12 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#TODO: Bessere Icons, korrekt eingefärbt
 
-import sys, os, math, urllib, re
+import sys, os, math, urllib, re, datetime, time, random, thread
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
 import avg
-import datetime, time, random
 
 sys.path.append('../')
 import anim
@@ -20,13 +18,11 @@ class Termin:
         self.event = escape(event)
         print (self.date, self.time, self.event)
 
-def load_termine():
+def parse_termine():
+    global termineStr
     global termine
+    global termineBereit
     termine = []
-    print "Termine werden gelesen."
-    file = urllib.urlopen("http://coredump.c-base.info/TerMine?action=raw")
-    print "Termine fertig gelesen."
-    termineStr = file.read()
     lines = termineStr.splitlines()
     expr = re.compile(
             "\|\|'''(.+)'''\|\|(.+)\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|")
@@ -46,7 +42,34 @@ def load_termine():
                 if (eventDate >= today and eventDate < today+td):
                     termine.append(Termin(
                             match.group(1), match.group(3), match.group(4)));
+    termineBereit = 0
+    
+    
 
+def load_termine():
+    global termineStr
+    print "Termine werden gelesen."
+    file = urllib.urlopen("http://coredump.c-base.info/TerMine?action=raw")
+    print "Termine fertig gelesen."
+    termineStr = file.read()
+    parse_termine()
+
+exiting = 0
+termineBereit = 0
+
+def termin_watcher():
+    global exiting
+    global termineBereit
+    global termineStr
+    while not(exiting):
+        time.sleep(60)
+        print "Termine werden gelesen."
+        file = urllib.urlopen("http://coredump.c-base.info/TerMine?action=raw")
+        print "Termine fertig gelesen."
+        termineStr = file.read()
+        termineBereit = 1
+
+ 
 letzteIndices = [0, 0, 0]
 
 def start_termin():
@@ -72,6 +95,8 @@ def start_termin():
         anim.SplineAnim(curTermin, "x", 1000, 800, -2000, -10, 20, 
                 lambda: anim.SplineAnim(curTermin, "x", 400, -10, 20, 0, 0, None))
     Player.setTimeout(3000, termin_weg)
+    if termineBereit:
+        parse_termine()
 
 def termin_weg():
     global curTerminNum
@@ -98,6 +123,7 @@ def init_termine():
     curTerminNum = 1
     terminVonLinks = 0 
     Player.setTimeout(10, start_termin)
+    thread.start_new_thread(termin_watcher, ())
 
 class Ad:
     def __init__(self, name, index, start_date, end_date, init_func):
@@ -346,7 +372,7 @@ else:
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
-#                  Log.PROFILE_LATEFRAMES |
+                  Log.PROFILE_LATEFRAMES |
                   Log.CONFIG 
 #                 Log.MEMORY  |
 #                 Log.BLTS    |
@@ -361,3 +387,4 @@ Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
 Player.setVBlankFramerate(2)
 Player.play()
+done = 1
