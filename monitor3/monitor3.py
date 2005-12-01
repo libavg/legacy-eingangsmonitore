@@ -109,7 +109,7 @@ def termin_weg():
     if terminVonLinks:
         anim.SplineAnim(curTermin, "x", 1000, 0, 0, 800, -2000, None)
     else:
-        anim.SplineAnim(curTermin, "x", 1000, 0, 0, -800, 2000, None)
+        anim.SplineAnim(curTermin, "x", 1400, 0, 0, -1200, 2000, None)
     Player.setTimeout(1500, start_termin)
 
 
