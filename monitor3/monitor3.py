@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-import sys, os, math, urllib, re, datetime, time, random, thread
+import sys, os, math, socket, urllib2, re, datetime, time, random, thread
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
 import avg
 
@@ -18,11 +18,12 @@ class Termin:
         self.event = escape(event)
         print (self.date, self.time, self.event)
 
+termine = []
+
 def parse_termine():
     global termineStr
     global termine
     global termineBereit
-    termine = []
     lines = termineStr.splitlines()
     expr = re.compile(
             "\|\|'''(.+)'''\|\|(.+)\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|")
@@ -43,58 +44,56 @@ def parse_termine():
                     termine.append(Termin(
                             match.group(1), match.group(3), match.group(4)));
     termineBereit = 0
-    
-    
 
 def load_termine():
     global termineStr
-    print "Termine werden gelesen."
-    file = urllib.urlopen("http://coredump.c-base.info/TerMine?action=raw")
-    print "Termine fertig gelesen."
-    termineStr = file.read()
-    parse_termine()
+    global termineBereit
+    try:
+        print "Termine werden gelesen."
+        file = urllib2.urlopen("http://coredump.c-base.info/TerMine?action=raw")
+        print "Termine fertig gelesen."
+        termineStr = file.read()
+        termineBereit = 1
+    except IOError, e:
+        Log.trace(Log.APP, "Can't read Termine: "+str(e.reason))
 
 exiting = 0
 termineBereit = 0
 
 def termin_watcher():
     global exiting
-    global termineBereit
-    global termineStr
     while not(exiting):
         time.sleep(60)
-        print "Termine werden gelesen."
-        file = urllib.urlopen("http://coredump.c-base.info/TerMine?action=raw")
-        print "Termine fertig gelesen."
-        termineStr = file.read()
-        termineBereit = 1
-
+        load_termine()
  
-letzteIndices = [0, 0, 0]
+letzteIndices = [-1, -1, -1]
 
 def start_termin():
     global curTerminNum
     global terminVonLinks
     global termine
     global letzteIndices
-    curInfoIndex = int(random.random()*len(termine))
-    while curInfoIndex in letzteIndices:
+    if termine != []:
         curInfoIndex = int(random.random()*len(termine))
-    letzteIndices.append(curInfoIndex)
-    letzteIndices = letzteIndices[1:]
-    curInfo = termine[curInfoIndex]
-    curTermin = Player.getElementByID("linie"+str(curTerminNum))
-    topLine = Player.getElementByID("linie"+str(curTerminNum)+"_top")
-    topLine.text = curInfo.event
-    bottomLine = Player.getElementByID("linie"+str(curTerminNum)+"_bottom")
-    bottomLine.text = curInfo.date+", "+curInfo.time
-    if terminVonLinks:
-        anim.SplineAnim(curTermin, "x", 1000, -800, 2000, 10, -20, 
-                lambda: anim.SplineAnim(curTermin, "x", 400, 10, -20, 0, 0, None))
+        while curInfoIndex in letzteIndices:
+            curInfoIndex = int(random.random()*len(termine))
+        letzteIndices.append(curInfoIndex)
+        letzteIndices = letzteIndices[1:]
+        curInfo = termine[curInfoIndex]
+        curTermin = Player.getElementByID("linie"+str(curTerminNum))
+        topLine = Player.getElementByID("linie"+str(curTerminNum)+"_top")
+        topLine.text = curInfo.event
+        bottomLine = Player.getElementByID("linie"+str(curTerminNum)+"_bottom")
+        bottomLine.text = curInfo.date+", "+curInfo.time
+        if terminVonLinks:
+            anim.SplineAnim(curTermin, "x", 1000, -800, 2000, 10, -20, 
+                    lambda: anim.SplineAnim(curTermin, "x", 400, 10, -20, 0, 0, None))
+        else:
+            anim.SplineAnim(curTermin, "x", 1000, 800, -2000, -10, 20, 
+                    lambda: anim.SplineAnim(curTermin, "x", 400, -10, 20, 0, 0, None))
+        Player.setTimeout(3000, termin_weg)
     else:
-        anim.SplineAnim(curTermin, "x", 1000, 800, -2000, -10, 20, 
-                lambda: anim.SplineAnim(curTermin, "x", 400, -10, 20, 0, 0, None))
-    Player.setTimeout(3000, termin_weg)
+        Player.setTimeout(3000, start_termin)
     if termineBereit:
         parse_termine()
 
@@ -116,6 +115,7 @@ def termin_weg():
 def init_termine():
     global curTerminNum
     global terminVonLinks
+    socket.setdefaulttimeout(5)
     load_termine()
     Player.getElementByID("linie1").x=900
     Player.getElementByID("linie2").x=900
