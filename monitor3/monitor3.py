@@ -73,9 +73,9 @@ def start_termin():
     global terminVonLinks
     global termine
     global letzteIndices
-    if termine != []:
+    if termine != [] :
         curInfoIndex = int(random.random()*len(termine))
-        while curInfoIndex in letzteIndices:
+        while curInfoIndex in letzteIndices and len(termine) > 3:
             curInfoIndex = int(random.random()*len(termine))
         letzteIndices.append(curInfoIndex)
         letzteIndices = letzteIndices[1:]
