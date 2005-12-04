@@ -86,11 +86,11 @@ def start_termin():
         bottomLine = Player.getElementByID("linie"+str(curTerminNum)+"_bottom")
         bottomLine.text = curInfo.date+", "+curInfo.time
         if terminVonLinks:
-            anim.SplineAnim(curTermin, "x", 1000, -800, 2000, 10, -20, 
-                    lambda: anim.SplineAnim(curTermin, "x", 400, 10, -20, 0, 0, None))
+            anim.SplineAnim(curTermin, "x", 1000, -800, 2000, 10, -20, 1,
+                    lambda: anim.SplineAnim(curTermin, "x", 400, 10, -20, 0.5, 0, 1, None))
         else:
-            anim.SplineAnim(curTermin, "x", 1000, 800, -2000, -10, 20, 
-                    lambda: anim.SplineAnim(curTermin, "x", 400, -10, 20, 0, 0, None))
+            anim.SplineAnim(curTermin, "x", 1000, 800, -2000, -10, 20, 1,
+                    lambda: anim.SplineAnim(curTermin, "x", 400, -10, 20, 0, 0, 1, None))
         Player.setTimeout(3000, termin_weg)
     else:
         Player.setTimeout(3000, start_termin)
@@ -106,16 +106,16 @@ def termin_weg():
     terminVonLinks = (random.random() > 0.5)
     curTermin = Player.getElementByID("linie"+str(curTerminNum))
     if terminVonLinks:
-        anim.SplineAnim(curTermin, "x", 1000, 0, 0, 800, -2000, None)
+        anim.SplineAnim(curTermin, "x", 1000, 0, 0, 800, -2000, 1, None)
     else:
-        anim.SplineAnim(curTermin, "x", 1400, 0, 0, -1200, 2000, None)
+        anim.SplineAnim(curTermin, "x", 1400, 0, 0, -1200, 2000, 1, None)
     Player.setTimeout(1500, start_termin)
 
 
 def init_termine():
     global curTerminNum
     global terminVonLinks
-    socket.setdefaulttimeout(5)
+    socket.setdefaulttimeout(10)
     load_termine()
     Player.getElementByID("linie1").x=900
     Player.getElementByID("linie2").x=900
@@ -140,17 +140,17 @@ class starsoda_ad:
         self.__flasche = Player.getElementByID("starsoda_flasche")
         self.__starsoda = Player.getElementByID("starsoda_starsoda")
         self.__taste = Player.getElementByID("starsoda_taste_of_time")
-        anim.LinearAnim(self.__flasche, "x", 6600, -240, 765, None)
+        anim.LinearAnim(self.__flasche, "x", 6600, -240, 765, 0, None)
         Player.setTimeout(1200, lambda: setattr(self.__stern, "opacity", 0))
         Player.setTimeout(1900, lambda: setattr(self.__stern, "opacity", 1))
         Player.setTimeout(4700, lambda: setattr(self.__starsoda, "opacity", 1))
         Player.setTimeout(4700, 
                 lambda: anim.LinearAnim(self.__starsoda, "x", 
-                        5700, 351.0, 671.0, None))
+                        5700, 351.0, 671.0, 0, None))
         Player.setTimeout(5000, lambda: setattr(self.__taste, "opacity", 1))
         Player.setTimeout(5000, 
                 lambda: anim.LinearAnim(self.__taste, "x", 
-                        1700, 196, 316, None))
+                        1700, 196, 316, 0, None))
         Player.setTimeout(6300, lambda: anim.fadeOut(self.__taste, 400))
         Player.setTimeout(6350, lambda: anim.fadeOut(self.__starsoda, 400))
         Player.setTimeout(6700, self.__stop)
@@ -162,14 +162,16 @@ class cwars_ad:
     def __start_logo(self): 
         Player.getElementByID("c-wars").opacity = 1
         anim.fadeOut(Player.getElementByID("c-wars"), 3000)
-        anim.LinearAnim(Player.getElementByID("c-wars"), "x", 5000, 66, 40, None) 
+        anim.LinearAnim(Player.getElementByID("c-wars"), 
+                "x", 5000, 66, 40, 0, None) 
+        anim.LinearAnim(Player.getElementByID("moon"), 
+                "opacity", 300, 0.0, 1.0, 0, None)
     def __start_words1(self): 
-        anim.LinearAnim(Player.getElementByID("moon"), "opacity", 1000, 0.0, 1.0, None)
         anim.LinearAnim(Player.getElementByID("where_past"), 
-                "opacity", 2000, 1.0, 0.0, None)
+                "opacity", 2000, 1.0, 0.0, 0, None)
     def __start_words2(self):
         anim.LinearAnim(Player.getElementByID("meets_future"), 
-                "opacity", 2000, 1.0, 0.0, None)
+                "opacity", 2000, 1.0, 0.0, 0, None)
     def __start_url(self): 
         Player.getElementByID("www_c-wars_com").opacity = 1
         anim.fadeOut(Player.getElementByID("www_c-wars_com"), 1500)
@@ -182,7 +184,6 @@ class cwars_ad:
         Player.setTimeout(4000, init_werbung)
     def __init__(self):
         node = Player.getElementByID("trailer")
-#        node.seekToFrame(0)
         node.play()
         node.opacity=1
         Player.setTimeout(2000, self.__start_logo)
@@ -213,13 +214,13 @@ class puppets_ad:
         self.__jumpCount = 0
         self.__startJump()
         anim.LinearAnim(self.__puppets, "x", 2100, 
-                self.__puppets.x, self.__puppets.x+120, None)
+                self.__puppets.x, self.__puppets.x+120, 0, None)
     def __startJump(self):
         self.__jumpCount+=1
         if self.__jumpCount < 4:
-            anim.SplineAnim(self.__puppets, "y", 350, 5, -55, 10, 0, self.__startFall)
+            anim.SplineAnim(self.__puppets, "y", 350, 5, -55, 10, 0, 0, self.__startFall)
     def __startFall(self):
-        anim.SplineAnim(self.__puppets, "y", 350, -55, 5, 0, 10, self.__startJump)
+        anim.SplineAnim(self.__puppets, "y", 350, -55, 5, 0, 10, 0, self.__startJump)
     def __showPuppets(self):
         self.__puppets.opacity = 1
     def __showLogo(self):

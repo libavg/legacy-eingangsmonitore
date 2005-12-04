@@ -18,9 +18,9 @@ def newWelcome():
         curLine = 1
     node = Player.getElementByID("begruessungstext"+str(curLine))
     if curLine == 7 or curLine == 14:
-        anim.LinearAnim(node, "x", 10000, -150, 800, newWelcome)
+        anim.LinearAnim(node, "x", 10000, -150, 800, 0, newWelcome)
     else:
-        anim.LinearAnim(node, "x", 11500, 800, -300, newWelcome)
+        anim.LinearAnim(node, "x", 11500, 800, -300, 0, newWelcome)
         
 def normalize(v):
     v = v - int(v)
