@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-curLine = 19
+curLine = 4
 
 def newWelcome():
     global curLine
@@ -17,10 +17,10 @@ def newWelcome():
     if curLine > Player.getElementByID("begruessungstext").getNumChildren():
         curLine = 1
     node = Player.getElementByID("begruessungstext"+str(curLine))
-    if curLine == 7 or curLine == 14:
+    if curLine == 6 or curLine == 13:
         anim.LinearAnim(node, "x", 10000, -150, 800, 0, newWelcome)
     else:
-        anim.LinearAnim(node, "x", 11500, 800, -300, 0, newWelcome)
+        anim.LinearAnim(node, "x", 11500, 800, -400, 0, newWelcome)
         
 def normalize(v):
     v = v - int(v)
@@ -118,7 +118,7 @@ if (bDebug):
 else:
     Player.setResolution(1, 0, 0, 0)
     Player.showCursor(0)
-    Log.setDestination("/var/log/cleuse.log")
+    Log.setFileDest("/var/log/cleuse.log")
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |

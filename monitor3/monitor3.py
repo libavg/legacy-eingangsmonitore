@@ -32,17 +32,21 @@ def parse_termine():
         match = expr.search(line)
         if match != None:
             if match.group(5) == "x" or match.group(5) == "xx":
-                date_struct = time.strptime(match.group(1), "%d.%m.%Y")
-                eventDate = datetime.date(date_struct.tm_year, date_struct.tm_mon, 
-                        date_struct.tm_mday)
-                if match.group(5) == "x":
-                    td = datetime.timedelta(30)
-                else:
-                    td = datetime.timedelta(60)
-                today = datetime.date.today()
-                if (eventDate >= today and eventDate < today+td):
-                    termine.append(Termin(
-                            match.group(1), match.group(3), match.group(4)));
+                try:
+                    date_struct = time.strptime(match.group(1), "%d.%m.%Y")
+                    eventDate = datetime.date(date_struct.tm_year, date_struct.tm_mon, 
+                            date_struct.tm_mday)
+                    if match.group(5) == "x":
+                        td = datetime.timedelta(30)
+                    else:
+                        td = datetime.timedelta(60)
+                    today = datetime.date.today()
+                    if (eventDate >= today and eventDate < today+td):
+                        termine.append(Termin(
+                                match.group(1), match.group(3), match.group(4)));
+                except:
+                    Log.trace(Log.APP, "Termin kaputt: "+line)
+                    pass
     termineBereit = 0
 
 def load_termine():
@@ -66,19 +70,17 @@ def termin_watcher():
         time.sleep(60)
         load_termine()
  
-letzteIndices = [-1, -1, -1]
-
+curInfoIndex = -1
+ 
 def start_termin():
     global curTerminNum
     global terminVonLinks
     global termine
-    global letzteIndices
+    global curInfoIndex
     if termine != [] :
-        curInfoIndex = int(random.random()*len(termine))
-        while curInfoIndex in letzteIndices and len(termine) > 3:
-            curInfoIndex = int(random.random()*len(termine))
-        letzteIndices.append(curInfoIndex)
-        letzteIndices = letzteIndices[1:]
+        curInfoIndex += 1
+        if curInfoIndex == len(termine):
+            curInfoIndex = 0
         curInfo = termine[curInfoIndex]
         curTermin = Player.getElementByID("linie"+str(curTerminNum))
         topLine = Player.getElementByID("linie"+str(curTerminNum)+"_top")
