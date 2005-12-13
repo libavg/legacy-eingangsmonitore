@@ -129,7 +129,7 @@ if (bDebug):
 else:
     Player.setResolution(1, 0, 0, 0)
     Player.showCursor(0)
-    Log.setDestination("//log/cleuse.log")
+    Log.setFileDest("/var/log/cleuse.log")
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |

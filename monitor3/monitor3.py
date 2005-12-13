@@ -26,17 +26,17 @@ def parse_termine():
     global termineBereit
     lines = termineStr.splitlines()
     expr = re.compile(
-            "\|\|'''(.+)'''\|\|(.+)\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|")
+            "\|\|'''(.+)'''\|\|(.+)\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|")
     for line in lines:
         line = line.rstrip("\n\r \t")
         match = expr.search(line)
         if match != None:
-            if match.group(5) == "x" or match.group(5) == "xx":
+            if match.group(6) == "x" or match.group(6) == "xx":
                 try:
                     date_struct = time.strptime(match.group(1), "%d.%m.%Y")
                     eventDate = datetime.date(date_struct.tm_year, date_struct.tm_mon, 
                             date_struct.tm_mday)
-                    if match.group(5) == "x":
+                    if match.group(6) == "x":
                         td = datetime.timedelta(30)
                     else:
                         td = datetime.timedelta(60)
@@ -89,7 +89,7 @@ def start_termin():
         bottomLine.text = curInfo.date+", "+curInfo.time
         if terminVonLinks:
             anim.SplineAnim(curTermin, "x", 1000, -800, 2000, 10, -20, 1,
-                    lambda: anim.SplineAnim(curTermin, "x", 400, 10, -20, 0.5, 0, 1, None))
+                    lambda: anim.SplineAnim(curTermin, "x", 400, 10, -20, 0, 0, 1, None))
         else:
             anim.SplineAnim(curTermin, "x", 1000, 800, -2000, -10, 20, 1,
                     lambda: anim.SplineAnim(curTermin, "x", 400, -10, 20, 0, 0, 1, None))
@@ -117,7 +117,7 @@ def termin_weg():
 def init_termine():
     global curTerminNum
     global terminVonLinks
-    socket.setdefaulttimeout(10)
+    socket.setdefaulttimeout(20)
     load_termine()
     Player.getElementByID("linie1").x=900
     Player.getElementByID("linie2").x=900
@@ -371,7 +371,7 @@ if (bDebug):
 else:
     Player.setResolution(1, 0, 0, 0)
     Player.showCursor(0)
-    Log.setDestination("/var/log/cleuse.log")
+    Log.setFileDest("/var/log/cleuse.log")
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
