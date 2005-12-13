@@ -388,6 +388,6 @@ anim.init(Player)
 Player.setTimeout(100, init_werbung)
 Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
-Player.setVBlankFramerate(2)
+Player.setVBlankFramerate(1)
 Player.play()
 done = 1

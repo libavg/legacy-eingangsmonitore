@@ -147,6 +147,6 @@ framerate = 40
 Player.setInterval(10, onFrame)
 Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
-Player.setVBlankFramerate(2)
+Player.setVBlankFramerate(1)
 Player.play()
 
