@@ -68,6 +68,10 @@
           <words id="begruessungstext18" x="800" y="80" opacity="1" 
               text="benvenuti a bordo di c-base" font="Eurostile" 
               color="DF0017" size="24"/>
+          <image id="begruessungstext19" x="800" y= "80" opacity="1"
+              href="media/willkommen/hieroglyphen.png"/>
+          <image id="begruessungstext20" x="800" y= "77" opacity="1"
+              href="media/willkommen/chinese.png"/>
       </div>
       <image x="16" y="75" opacity="1" 
             href="media/willkommen/kasten_mitte_maske.png"/>

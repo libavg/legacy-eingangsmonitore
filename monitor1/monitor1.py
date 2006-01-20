@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-curLine = 4
+curLine = 18
 
 def newWelcome():
     global curLine
@@ -128,12 +128,11 @@ Log.setCategories(Log.APP |
 #                 Log.BLTS    
 #                  Log.EVENTS
                   )
-
 Player.loadFile("monitor1.avg")
 anim.init(Player)
 Player.setInterval(10, onframe)
 Player.setTimeout(10, newWelcome)
 Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
-Player.setVBlankFramerate(1)
+Player.setVBlankFramerate(2)
 Player.play()
