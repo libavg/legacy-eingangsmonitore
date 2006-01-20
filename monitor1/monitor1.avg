@@ -72,6 +72,9 @@
               href="media/willkommen/hieroglyphen.png"/>
           <image id="begruessungstext20" x="800" y= "77" opacity="1"
               href="media/willkommen/chinese.png"/>
+          <words id="begruessungstext21" x="800" y="80" opacity="1" 
+              text="Kippes!" font="Arial" 
+              color="DF0017" size="24"/>
       </div>
       <image x="16" y="75" opacity="1" 
             href="media/willkommen/kasten_mitte_maske.png"/>
