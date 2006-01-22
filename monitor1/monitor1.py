@@ -9,15 +9,16 @@ from datetime import datetime, timedelta
 sys.path.append('../')
 import anim
 
-curLine = 18
+curLine = 16
 
 def newWelcome():
     global curLine
     curLine += 1
-    if curLine > Player.getElementByID("begruessungstext").getNumChildren():
-        curLine = 1
-    node = Player.getElementByID("begruessungstext"+str(curLine))
-    if curLine == 6 or curLine == 13:
+    textNode = Player.getElementByID("begruessungstext")
+    if curLine >= textNode.getNumChildren():
+        curLine = 0
+    node = textNode.getChild(curLine)
+    if curLine == 5 or curLine == 12:
         anim.LinearAnim(node, "x", 10000, -150, 800, 0, newWelcome)
     else:
         anim.LinearAnim(node, "x", 11500, 800, -400, 0, newWelcome)
