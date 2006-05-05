@@ -123,7 +123,7 @@ else:
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
-                 Log.PROFILE_LATEFRAMES |
+#                 Log.PROFILE_LATEFRAMES |
                   Log.CONFIG
 #                 Log.MEMORY  |
 #                 Log.BLTS    
@@ -135,5 +135,5 @@ Player.setInterval(10, onframe)
 Player.setTimeout(10, newWelcome)
 Player.getElementByID("bkgndvideo").opacity = 0.4
 Player.getElementByID("bkgndvideo").play()
-Player.setVBlankFramerate(2)
+Player.setVBlankFramerate(1)
 Player.play()

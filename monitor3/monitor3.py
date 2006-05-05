@@ -375,7 +375,7 @@ else:
 Log.setCategories(Log.APP |
                   Log.WARNING | 
                   Log.PROFILE |
-                  Log.PROFILE_LATEFRAMES |
+#                  Log.PROFILE_LATEFRAMES |
                   Log.CONFIG 
 #                 Log.MEMORY  |
 #                 Log.BLTS    |
@@ -386,8 +386,8 @@ init_cur_ads()
 init_termine()
 anim.init(Player)
 Player.setTimeout(100, init_werbung)
-Player.getElementByID("bkgndvideo").opacity = 0.4
+Player.getElementByID("bkgndvideo").opacity = 0.3
 Player.getElementByID("bkgndvideo").play()
-Player.setVBlankFramerate(1)
+Player.setVBlankFramerate(2)
 Player.play()
 done = 1
