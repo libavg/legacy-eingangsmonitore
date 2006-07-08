@@ -9,6 +9,15 @@ import avg
 sys.path.append('../')
 import anim
 
+shotNum = 0
+
+def onkey():
+    global shotNum
+    key = Player.getCurEvent().keystring
+    if key == "s":
+        shotNum += 1
+        Player.screenshot("infoscreen"+str(shotNum)+".png")
+
 class Termin:
     def __init__(self, date, time, event):
         def escape(s):
@@ -24,6 +33,7 @@ def parse_termine():
     global termineStr
     global termine
     global termineBereit
+    termine = []
     lines = termineStr.splitlines()
     expr = re.compile(
             "\|\|'''(.+)'''\|\|(.+)\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|'''(.+)'''\|\|")
@@ -67,7 +77,7 @@ termineBereit = 0
 def termin_watcher():
     global exiting
     while not(exiting):
-        time.sleep(60)
+        time.sleep(10)
         load_termine()
  
 curInfoIndex = -1
@@ -339,6 +349,14 @@ adSchedule= [
                     datetime.date(2014,10,1), cwars_ad)
             ]
 
+def switch_to_ad(index):
+    adsNode = Player.getElementByID("werbung_switch");
+    for i in range(adsNode.getNumChildren()):
+        if i == index:
+            adsNode.getChild(i).active = True
+        else:
+            adsNode.getChild(i).active = False
+
 curWerbung = 0
 
 def init_werbung():
@@ -347,7 +365,7 @@ def init_werbung():
     curWerbung += 1
     curWerbung %= len(curAds)
     anim.fadeIn(Player.getElementByID("werbung"), 500, 1)
-    Player.getElementByID("werbung_switch").activechild = curAds[curWerbung].index
+    switch_to_ad(curAds[curWerbung].index)
     curAds[curWerbung].init_func()
 
 def init_cur_ads():

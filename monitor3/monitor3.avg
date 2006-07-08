@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE avg SYSTEM "../../libavg/doc/avg.dtd">
-<avg id="main" width="800" height="600">
+<avg id="main" width="800" height="600" onkeyup="onkey">
   <div id="topscreen_bkgr" x="0" y="0" width="800" height="300">
     <image x="0" y="0" href="../media/hintergrund_rillen.png"/>
   </div>
@@ -46,7 +46,7 @@
   </div>
   <div id="bottomscreen" x="0" y="300" width="800" height="300">
     <div id="werbung" x="12" y="50" width="776">
-        <excl id="werbung_switch">
+        <div id="werbung_switch">
           <div>
             <image id="starsoda_bkgd" x="0" y="13" z="1" 
                    href="media/werbung/starsoda/bkgd.tif"/>
@@ -109,7 +109,7 @@
                       href="media/werbung/c-wars/www_c-wars_com.tif"/>
             </div>
           </div>
-        </excl>
+        </div>
     </div>
   </div>
   <image href="../media/schwarze_maske.png"/>
