@@ -48,39 +48,39 @@
     <div id="werbung" x="12" y="50" width="776">
         <div id="werbung_switch">
           <div>
-            <image id="starsoda_bkgd" x="0" y="13" z="1" 
+            <image id="starsoda_bkgd" x="0" y="13" 
                    href="media/werbung/starsoda/bkgd.tif"/>
-            <image id="starsoda_stern" x="100" y="8" z="2" 
+            <image id="starsoda_stern" x="100" y="8" 
                    href="media/werbung/starsoda/stern.tif"/>
-            <image id="starsoda_starsoda" x="351" y="30" z="3" 
+            <image id="starsoda_starsoda" x="351" y="30" 
                    href="media/werbung/starsoda/starsoda.tif" opacity="0"/>
-            <image id="starsoda_taste_of_time" x="196" y="87" z="4" 
+            <image id="starsoda_taste_of_time" x="196" y="87" 
                    href="media/werbung/starsoda/taste_of_time.tif" opacity="0"/>
-            <image id="starsoda_flasche" x="-230" y="13" z="6" 
+            <image id="starsoda_flasche" x="-230" y="13" 
                    href="media/werbung/starsoda/flasche.tif"/>
           </div>
           <div>
-            <image id="city" x="0" y="71" z="2" opacity="0" 
+            <image id="city" x="0" y="71" opacity="0" 
                    href="media/werbung/meetandmingle/city.tif"/>
-            <div id="godzilla_group" x="550" y="4" z="1">
-              <image id="godzilla" x="0" y="0" z="1" opacity="0" 
+            <div id="godzilla_group" x="550" y="4">
+              <image id="godzilla" x="0" y="0" opacity="0" 
                      href="media/werbung/meetandmingle/godzilla.tif"/>
-              <image id="eyes" x="18" y="44" z="2" opacity="0" 
+              <image id="eyes" x="18" y="44" opacity="0" 
                      href="media/werbung/meetandmingle/eyes.tif"/>
             </div>
-            <image id="rays" x="231" y="29" z="3" opacity="0" 
+            <image id="rays" x="231" y="29" opacity="0" 
                    href="media/werbung/meetandmingle/rays.tif"/>
-            <image id="title" x="238" y="53" z="4" opacity="0" 
+            <image id="title" x="238" y="53" opacity="0" 
                    href="media/werbung/meetandmingle/title.tif"/>
-            <image id="date" x="238" y="53" z="4" opacity="0" 
+            <image id="date" x="238" y="53" opacity="0" 
                    href="media/werbung/meetandmingle/date.tif"/>
           </div>
           <div>
-            <image id="puppets_bkgd" x="0" y="0" z="1" 
+            <image id="puppets_bkgd" x="0" y="0" 
                    href="media/werbung/puppetmastaz/bkgd.tif"/>
-            <image id="puppets" x="360" y="5" z="2" 
+            <image id="puppets" x="360" y="5" 
                     href="media/werbung/puppetmastaz/puppets.tif"/>
-            <image id="puppets_logo" x="55" y="50" z="5" 
+            <image id="puppets_logo" x="55" y="50" 
                     href="media/werbung/puppetmastaz/puppets_logo.tif"/>
           </div>
           <div>
@@ -88,24 +88,24 @@
                    href="media/werbung/ph_neutral/phneut2_320x240.avi"/>
           </div>
           <div id="gimp_main">
-            <image id="gimp_flyer" x="0" y="-5" z="1" 
+            <image id="gimp_flyer" x="0" y="-5" 
                    href="media/werbung/gimp/gimp_logo.png" opacity="1" />
-            <words id="gimp_title" color="333333" x="-300" y="195" z="2" 
-                   text="bring out the gimp" font="eurostil" size="20" />
+            <words id="gimp_title" color="333333" x="-300" y="195" 
+                   text="bring out the gimp" font="eurostile" size="20" />
           </div>
           <div>
-            <div id="active_area" width="800" height="200" z="2">
-              <video id="trailer" z="1" opacity="1.0" loop="false"
+            <div id="active_area" width="800" height="200">
+              <video id="trailer" opacity="1.0" loop="false"
                       href="media/werbung/c-wars/c-wars-trailer.mpg"/>
-              <image id="moon" x="0" y="0" z="2" opacity="0" 
+              <image id="moon" x="0" y="0" opacity="0" 
                       href="media/werbung/c-wars/moon.tif"/> 
-              <image id="c-wars" x="66" y="58" z="3" opacity="0" 
+              <image id="c-wars" x="66" y="58" opacity="0" 
                       href="media/werbung/c-wars/c-wars.tif"/>          
-              <image id="where_past" x="48" y="148" z="3" opacity="0" 
+              <image id="where_past" x="48" y="148" opacity="0" 
                       href="media/werbung/c-wars/where_past.tif"/>
-              <image id="meets_future" x="248" y="148" z="3" opacity="0" 
+              <image id="meets_future" x="248" y="148" opacity="0" 
                       href="media/werbung/c-wars/meets_future.tif"/>
-              <image id="www_c-wars_com" x="470" y="152" z="3" opacity="0"
+              <image id="www_c-wars_com" x="470" y="152" opacity="0"
                       href="media/werbung/c-wars/www_c-wars_com.tif"/>
             </div>
           </div>

@@ -9,7 +9,7 @@
   </div>
   <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0" 
       blendmode="add" href="../media/base_loop.avi" loop="true"/>
-  <div id="topscreen" x="0" y="0" width="800" height="300" z="2">
+  <div id="topscreen" x="0" y="0" width="800" height="300">
     <div id="lageplan" x="0" y="50" width="800" height="250">
       <image x="16" y="18" opacity="0.6" href="media/lageplan/kasten_60.png"/>
       <image x="59" y="25" href="media/lageplan/c-base.png"/>
@@ -62,7 +62,7 @@
           href="media/lageplan/pixel_schwarz.png"/>
     </div>
   </div>
-  <div id="bottomscreen" x="0" y="300" width="800" height="300" z="2">
+  <div id="bottomscreen" x="0" y="300" width="800" height="300">
     <div id="parameter" y="50">
       <image x="16" y="18" opacity="0.6" href="media/parameter/kasten_60.png"/>
       <words x="32" y="28" parawidth="736" color="0D1C45" font="Eurostile" 
