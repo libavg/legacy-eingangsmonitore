@@ -8,7 +8,7 @@
     <image x="0" y="0" href="../media/hintergrund_rillen.png"/>
   </div>
   <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0" 
-      blendmode="add" href="../media/base_loop.avi" loop="true"/>
+      blendmode="add" href="../media/base_loop.avi" loop="true" fps="60"/>
   <div id="topscreen" x="0" y="0" width="800" height="300">
     <div id="hinweise" x="16" y="50" width="768" height="250">
       <image x="0" y="18" opacity="0.6" href="media/hinweise/kasten_60.png"/>
@@ -96,7 +96,7 @@
           <div>
             <div id="active_area" width="800" height="200">
               <video id="trailer" opacity="1.0" loop="false"
-                      href="media/werbung/c-wars/c-wars-trailer.mpg"/>
+                      href="media/werbung/c-wars/c-wars-trailer.mpg" fps="30"/>
               <image id="moon" x="0" y="0" opacity="0" 
                       href="media/werbung/c-wars/moon.tif"/> 
               <image id="c-wars" x="66" y="58" opacity="0" 

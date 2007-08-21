@@ -8,7 +8,7 @@
     <image x="0" y="0" href="../media/hintergrund_rillen.png"/>
   </div>
   <video id="bkgndvideo" x="0" y="0" width="800" height="600" opacity="0" 
-      blendmode="add" href="../media/base_loop.avi" loop="true"/>
+      blendmode="add" href="../media/base_loop.avi" loop="true" fps="60"/>
   <div id="topscreen" x="0" y="0" width="800" height="300">
     <div id="willkommen" x="0" y="50" width="800" height="250">
       <image x="16" y="18" opacity="0.6" href="media/willkommen/kasten_60.png"/>
