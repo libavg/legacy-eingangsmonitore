@@ -3,17 +3,14 @@
 
 
 import sys, os, math, socket, urllib2, re, datetime, time, random, thread
-sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
-import avg
+from libavg import avg, anim
 
-sys.path.append('../')
-import anim
 
 shotNum = 0
 
-def onkey():
+def onkey(Event):
     global shotNum
-    key = Player.getCurEvent().keystring
+    key = Event.keystring
     if key == "s":
         shotNum += 1
         Player.screenshot("infoscreen"+str(shotNum)+".png")
@@ -30,6 +27,7 @@ class Termin:
 termine = []
 
 def parse_termine():
+    print "parse_termine"
     global termineStr
     global termine
     global termineBereit
@@ -64,7 +62,7 @@ def load_termine():
     global termineBereit
     try:
         print "Termine werden gelesen."
-        file = urllib2.urlopen("http://coredump.c-base.info/TerMine?action=raw")
+        file = urllib2.urlopen("http://coredump.c-base.org/coredump/TerMine?action=raw")
         print "Termine fertig gelesen."
         termineStr = file.read()
         termineBereit = 1
