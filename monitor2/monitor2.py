@@ -3,10 +3,10 @@
 
 import sys, os, math, random, colorsys
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
-import avg
+from libavg import avg
 
 sys.path.append('../')
-import anim
+from libavg import anim
 
 def interpolateColor(val, colors):
     i = 0

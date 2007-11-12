@@ -3,11 +3,11 @@
 
 import sys, os, math, random
 sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
-import avg
+from libavg import avg
 from datetime import datetime, timedelta
 
 sys.path.append('../')
-import anim
+from libavg import anim
 
 curLine = 16
 
