@@ -1,27 +1,25 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys, os, math, random
-sys.path.append('/usr/local/lib/python2.4/site-packages/libavg')
-from libavg import avg
+from libavg import *
 from datetime import datetime, timedelta
 
 sys.path.append('../')
-from libavg import anim
 
 curLine = 16
 
 def newWelcome():
     global curLine
     curLine += 1
-    textNode = Player.getElementByID("begruessungstext")
+    textNode = g_Player.getElementByID("begruessungstext")
     if curLine >= textNode.getNumChildren():
         curLine = 0
     node = textNode.getChild(curLine)
     if curLine == 5 or curLine == 12:
-        anim.LinearAnim(node, "x", 10000, -150, 800, 0, newWelcome)
+        LinearAnim(node, "x", 10000, -150, 800, 0, None, newWelcome).start()
     else:
-        anim.LinearAnim(node, "x", 11500, 800, -400, 0, newWelcome)
+        LinearAnim(node, "x", 11500, 800, -400, 0, None, newWelcome).start()
         
 def normalize(v):
     v = v - int(v)
@@ -56,9 +54,9 @@ def calcTime():
     lasttime = now
     now = datetime.now()
     dateString = "stationsceit:  "+now.date().isoformat()
-    Player.getElementByID("stationsdatum").text = dateString
+    g_Player.getElementByID("stationsdatum").text = dateString
     timeString = now.time().isoformat()[0:8]
-    Player.getElementByID("stationszeit").text = timeString
+    g_Player.getElementByID("stationszeit").text = timeString
     timeToStart = liftoffTime-now
     # This isn't really correct, but who's going to notice...
     mins = "%(#)02d" % {'#': long((timeToStart.seconds%3600)/60)}
@@ -68,11 +66,11 @@ def calcTime():
         days = "%(#)02d" % {'#': long(timeToStart.days%30)}
         hours = "%(#)02d" % {'#': long(timeToStart.seconds/3600)}
         startString = "P"+years+"Y"+months+"M"+days+"DT"+hours+"H"+mins+"M"
-        Player.getElementByID("zeit_bis_start").text = startString
+        g_Player.getElementByID("zeit_bis_start").text = startString
         lastMins = mins
     secs = "%(#)02d" % {'#': long(timeToStart.seconds%60)}
     ms = "%(#)03d" % {'#': long(timeToStart.microseconds/1000)}
-    Player.getElementByID("secs_bis_start").text = secs+"S"+ms+"MS"
+    g_Player.getElementByID("secs_bis_start").text = secs+"S"+ms+"MS"
 
     timeVelocity += random.random()-0.5
     if timeVelocity > 2:
@@ -96,7 +94,7 @@ def calcMoon():
     newMoonAge = calcMoonAge(now.year, now.month, now.day)
     if newMoonAge != moonAge:
         moonAge = newMoonAge
-        moonNode = Player.getElementByID("mond")
+        moonNode = g_Player.getElementByID("mond")
         for i in range(0,moonNode.getNumChildren()):
             moonNode.getChild(i).opacity = 0
             moonNode.getChild(i).angle = 0
@@ -111,14 +109,14 @@ def onframe():
     calcTime()
     calcMoon()
 
-Player = avg.Player()
+g_Player = avg.Player.get()
 Log = avg.Logger.get()
 bDebug = not(os.getenv('CLEUSE_DEPLOY'))
 if (bDebug):
-    Player.setResolution(0, 0, 0, 0) 
+    g_Player.setResolution(0, 0, 0, 0) 
 else:
-    Player.setResolution(1, 0, 0, 0)
-    Player.showCursor(0)
+    g_Player.setResolution(1, 0, 0, 0)
+    g_Player.showCursor(0)
     Log.setFileDest("/var/log/cleuse.log")
 Log.setCategories(Log.APP |
                   Log.WARNING | 
@@ -129,11 +127,11 @@ Log.setCategories(Log.APP |
 #                 Log.BLTS    
 #                  Log.EVENTS
                   )
-Player.loadFile("monitor1.avg")
-anim.init(Player)
-Player.setInterval(10, onframe)
-Player.setTimeout(10, newWelcome)
-Player.getElementByID("bkgndvideo").opacity = 0.4
-Player.getElementByID("bkgndvideo").play()
-Player.setVBlankFramerate(1)
-Player.play()
+Words.addFontDir("../../fonts")
+g_Player.loadFile("monitor1.avg")
+g_Player.setInterval(10, onframe)
+g_Player.setTimeout(10, newWelcome)
+g_Player.getElementByID("bkgndvideo").opacity = 0.4
+g_Player.getElementByID("bkgndvideo").play()
+g_Player.setVBlankFramerate(1)
+g_Player.play()
